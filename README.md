@@ -4,4 +4,4 @@ NCache is an extremely fast and scalable Open Source distributed cache for .NET 
 
 NCache is used by hundreds of companies all over the world in mission critical applications. See more details about NCache at www.alachisoft.com.
 
-This repository contains docker image for NCache 
+This repository contains docker files build images for both NCache Enterprise and Commnunity edition
