@@ -17,26 +17,23 @@ COPY setup .
 EXPOSE 9800
 # Exposing the port at which NCache service will listen for incoming management connection requests (NCache Manager, Monitor and Tools).
 EXPOSE 8250
-# Exposing the port at which Bridge service will listen for incoming connection requests from cache processes.
-EXPOSE 9900
-# Exposing the port at which Bridge service will listen for incoming Management connection requests (NCache Manager and Tools).
-EXPOSE 8260
 
 # Installing Microsoft Visual C++ 2010 x64 Redistributable (Prerequisite of NCache).
 RUN vcredist_x64.exe /norestart /q
 
 # Installing NCache setup.
-# The parameter "EDITION" represents the NCache installation edition and has the following values:
-#		Enterprise Server Edition = "0"
-#		Enterprise Remote Client Edition = "3"
-# The parameter "KEY" is the install key and is sent to user through e-mail once they download NCache setup. In case if user does not get a key, contact us at http://www.alachisoft.com/company/contact-us.html.
+# The parameter "INSTALLMODE" represents the NCache installation mode and has the following values:
+# Rename this parameter to "EDITION" if you are building image for NCache version 4.8 or older.
+#		Enterprise Server Install mode = "0"
+#		Enterprise Remote Client Install mode = "3"
+# The parameter "KEY" is the install key and is sent to user through e-mail once they download NCache setup. This parameter is required only for NCache version 4.6. In case if user does not get a key, contact us at http://www.alachisoft.com/company/contact-us.html.
 # The parameter "USERFIRSTNAME" represents the first name of the user.
 # The parameter "USERLASTNAME" represents the last name of the user.
 # The parameter "COMPANYNAME" represents the company the user works for.
 # The parameter "EMAILADDRESS" represents the e-mail address of the user.
 # The parameter "INSTALLDIR" represents the installation directory where NCache will be installed.
 # the parameter "/qn" specifies that NCache will be installed silently without user interaction and will not prompt the user for anything.
-RUN msiexec /i ncache.ent.x64.msi EDITION="3" KEY="XXXXXXXXXX" USERFIRSTNAME="John" USERLASTNAME="Smith" COMPANYNAME="Alachisoft" EMAILADDRESS="john@alachisoft.com" INSTALLDIR="C:\Program Files\NCache" /qn
+RUN msiexec /i ncache.ent.x64.msi INSTALLMODE="3" USERFIRSTNAME="John" USERLASTNAME="Smith" COMPANYNAME="Alachisoft" EMAILADDRESS="john@alachisoft.com" INSTALLDIR="C:\Program Files\NCache" /qn
 
 # Currently, the IP during NCache installation is stored in the configuration files and it can not be made static at that point.
 # However, the IP can be made static once the container is started.
