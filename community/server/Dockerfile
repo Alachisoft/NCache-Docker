@@ -22,9 +22,10 @@ EXPOSE 8250
 RUN vcredist_x64.exe /norestart /q
 
 # Installing NCache setup.
-# The parameter "EDITION" represents the NCache installation edition and has the following values:
-#		Community Server Edition = "0"
-#		Community Remote Client Edition = "3"
+# The parameter "INSTALLMODE" represents the NCache installation mode and has the following values:
+# Rename this parameter to "EDITION" if you are building image for NCache version 4.8 or older.
+#		Community Server Install mode = "0"
+#		Community Remote Client Install mode = "3"
 # The parameter "KEY" is the install key and is sent to user through e-mail once they download NCache setup. In case if user does not get a key, contact us at http://www.alachisoft.com/company/contact-us.html.
 # The parameter "USERFIRSTNAME" represents the first name of the user.
 # The parameter "USERLASTNAME" represents the last name of the user.
@@ -32,7 +33,7 @@ RUN vcredist_x64.exe /norestart /q
 # The parameter "EMAILADDRESS" represents the e-mail address of the user.
 # The parameter "INSTALLDIR" represents the installation directory where NCache will be installed.
 # the parameter "/qn" specifies that NCache will be installed silently without user interaction and will not prompt the user for anything.
-RUN msiexec /i ncache.com.x64.msi EDITION="0" KEY="XXXXXXXXXX" USERFIRSTNAME="John" USERLASTNAME="Smith" COMPANYNAME="Alachisoft" EMAILADDRESS="john@alachisoft.com" INSTALLDIR="C:\Program Files\NCache" /qn
+RUN msiexec /i ncache.com.x64.msi INSTALLMODE="0" KEY="XXXXXXXXXX" USERFIRSTNAME="John" USERLASTNAME="Smith" COMPANYNAME="Alachisoft" EMAILADDRESS="john@alachisoft.com" INSTALLDIR="C:\Program Files\NCache" /qn
 
 # Currently, the IP during NCache installation is stored in the configuration files and it can not be made static at that point.
 # However, the IP can be made static once the container is started.
