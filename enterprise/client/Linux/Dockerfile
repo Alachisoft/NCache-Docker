@@ -23,12 +23,6 @@ EXPOSE 9800
 # Exposing the port at which Ncache service will listen for the incoming management connection requests (NCache Manager, Monitor and Tools).
 EXPOSE 8250
 
-# Exposing the port at which Bridge service will listen for the incoming connection requests from cache processes.
-EXPOSE 9900
-
-# Exposing the port at which Bridge service will listen for the incoming Management connection requests (NCache Manager and Tools).
-EXPOSE 8260
-
 # Make sure your machine has access to internet for installation of packages.
 # Installing package procps (Prerequisite of NCache services). 
 RUN apt-get update &&\
@@ -46,12 +40,12 @@ RUN apt-get update &&\
 #		Enterprise Server Install mode = "0"
 #		Enterprise Remote Client Install mode = "3"
 RUN chmod +x installncache.sh &&\
-    ./installncache.sh --installmode "0" --evalkey "XXXXXXXXXX" --firstname "John" --lastname "Smith" --email "john@alachisoft.com" --installpath "/opt" --force --password "xxxxxxxx" 
+    ./installncache.sh --installmode "3" --firstname "John" --lastname "Smith" --email "john@alachisoft.com" --installpath "/opt" --force --password "xxxxxxxx" 
 
 # Currently, the IP during NCache installation is stored in the configuration files and it can not be made static at that point.
 # However, the IP can be made static once the container is started.
 # The startup script calls ipbinding.sh which replaces the IP with the actual IP assigned to the container on the first time the container is started.
-# Furthermore the startup.sh script starts ncached, ncacheloaderd and ncachebridged daemon services.
+# Furthermore the startup.sh script starts ncached daemon service.
 # Making startup.sh executable.
 RUN chmod +x /app/startup.sh
 
