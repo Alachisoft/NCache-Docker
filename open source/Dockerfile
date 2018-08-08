@@ -1,5 +1,5 @@
 # Setting base image for NCache.
-FROM microsoft/dotnet-framework:4.6.2
+FROM microsoft/dotnet-framework:4.7.2-runtime
 
 # Setting work directory to copy setups and resources for configuring NCache.
 WORKDIR /app
