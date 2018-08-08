@@ -1,5 +1,5 @@
 # Setting base image for NCache.
-FROM microsoft/dotnet-framework:4.6.2
+FROM microsoft/dotnet-framework:4.7.2-runtime
 
 # Setting work directory to copy setups and resources for configuring NCache.
 WORKDIR /app
@@ -33,7 +33,7 @@ RUN vcredist_x64.exe /norestart /q
 # The parameter "EMAILADDRESS" represents the e-mail address of the user.
 # The parameter "INSTALLDIR" represents the installation directory where NCache will be installed.
 # the parameter "/qn" specifies that NCache will be installed silently without user interaction and will not prompt the user for anything.
-RUN msiexec /i ncache.com.x64.msi INSTALLMODE="3" USERFIRSTNAME="John" USERLASTNAME="Smith" COMPANYNAME="Alachisoft" EMAILADDRESS="john@alachisoft.com" INSTALLDIR="C:\Program Files\NCache" /qn
+RUN msiexec /i ncache.pro.x64.msi INSTALLMODE="3" USERFIRSTNAME="John" USERLASTNAME="Smith" COMPANYNAME="Alachisoft" EMAILADDRESS="john@alachisoft.com" INSTALLDIR="C:\Program Files\NCache" /qn
 
 # Currently, the IP during NCache installation is stored in the configuration files and it can not be made static at that point.
 # However, the IP can be made static once the container is started.
