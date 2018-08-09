@@ -55,7 +55,7 @@ Following commands can be used to pull images with different editions of NCache:
 
 ## Dockerfile Links
 
-In order to created custom Docker images, Dockerfiles can be found at the follwing [GitHub](https://github.com/Alachisoft/NCache-Docker) links:
+In order to create custom Docker images, Dockerfiles can be found at the follwing [GitHub](https://github.com/Alachisoft/NCache-Docker) links:
 
 *   [NCache Enterprise Server 4.9 SP1 For Windows Server Core](https://github.com/Alachisoft/NCache-Docker/blob/master/enterprise/server/WindowServerCore/Dockerfile)
 *   [NCache Enterprise Client 4.9 SP1 For Windows Server Core](https://github.com/Alachisoft/NCache-Docker/blob/master/enterprise/client/WindowServerCore/Dockerfile)
