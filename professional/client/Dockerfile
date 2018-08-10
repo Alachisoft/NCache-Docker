@@ -24,8 +24,8 @@ RUN vcredist_x64.exe /norestart /q
 # Installing NCache setup.
 # The parameter "INSTALLMODE" represents the NCache installation mode and has the following values:
 # Rename this parameter to "EDITION" if you are building image for NCache version 4.8 or older.
-#		Community Server Install mode = "0"
-#		Community Remote Client Install mode = "3"
+#		Professional Server Install mode = "0"
+#		Professional Remote Client Install mode = "3"
 # The parameter "KEY" is the install key and is sent to user through e-mail once they download NCache setup. This parameter is required only for NCache version 4.6. In case if user does not get a key, contact us at http://www.alachisoft.com/company/contact-us.html. 
 # The parameter "USERFIRSTNAME" represents the first name of the user.
 # The parameter "USERLASTNAME" represents the last name of the user.
