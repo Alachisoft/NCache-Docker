@@ -1,4 +1,4 @@
-# Setting base image for NCache.
+# Setting base image for NCache. Uses Windows Server Core.
 FROM microsoft/dotnet-framework:4.7.2-runtime
 
 # Setting work directory to copy setups and resources for configuring NCache.
@@ -22,13 +22,18 @@ EXPOSE 8250
 RUN vcredist_x64.exe /norestart /q
 
 # Installing NCache setup.
+# The parameter "INSTALLMODE" represents the NCache installation mode and has the following values:
+# Rename this parameter to "EDITION" if you are building image for NCache version 4.8 or older.
+#		Professional Server Install mode = "0"
+#		Professional Remote Client Install mode = "3"
+# The parameter "KEY" is the install key and is sent to user through e-mail once they download NCache setup. This parameter is required only for NCache version 4.6. In case if user does not get a key, contact us at http://www.alachisoft.com/company/contact-us.html. 
 # The parameter "USERFIRSTNAME" represents the first name of the user.
 # The parameter "USERLASTNAME" represents the last name of the user.
 # The parameter "COMPANYNAME" represents the company the user works for.
 # The parameter "EMAILADDRESS" represents the e-mail address of the user.
 # The parameter "INSTALLDIR" represents the installation directory where NCache will be installed.
 # the parameter "/qn" specifies that NCache will be installed silently without user interaction and will not prompt the user for anything.
-RUN msiexec /i ncache.opensource.clr40.x64.msi USERFIRSTNAME="John" USERLASTNAME="Smith" COMPANYNAME="Alachisoft" EMAILADDRESS="john@alachisoft.com" INSTALLDIR="C:\Program Files\NCache" /qn
+RUN msiexec /i ncache.pro.x64.msi INSTALLMODE="3" USERFIRSTNAME="John" USERLASTNAME="Smith" COMPANYNAME="Alachisoft" EMAILADDRESS="john@alachisoft.com" INSTALLDIR="C:\Program Files\NCache" /qn
 
 # Currently, the IP during NCache installation is stored in the configuration files and it can not be made static at that point.
 # However, the IP can be made static once the container is started.

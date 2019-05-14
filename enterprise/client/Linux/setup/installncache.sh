@@ -73,11 +73,11 @@ sed -i "s|<DESTINATION>|$DESTINATION|g" "/app/ipbinding.sh"
 
 # Extracting and installing NCache
 tar -zxf ncache.ent.netcore.tar.gz
-cd ncache-enterprise-4.9-dotnet
+cd ncache-enterprise-5.0-dotnet
 
 ./install  --installmode $INSTALLMODE --firstname $FIRST_NAME --lastname $LAST_NAME --email $EMAIL --installpath $DESTINATION --force --password $PASSWORD
 
 # Removing installation resources
 rm /app/ncache.ent.netcore.tar.gz
-rm -r /app/ncache-enterprise-4.9-dotnet
+rm -r /app/ncache-enterprise-5.0-dotnet
 rm -f /app/installncache.sh

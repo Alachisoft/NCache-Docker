@@ -1,4 +1,4 @@
-# Setting base image for NCache.
+# Setting base image for NCache. Uses Windows server core.
 FROM microsoft/dotnet-framework:4.7.2-runtime
 
 # Setting work directory to copy setups and resources for configuring NCache.

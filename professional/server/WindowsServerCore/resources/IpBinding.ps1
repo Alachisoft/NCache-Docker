@@ -11,6 +11,15 @@ $xml = [xml](Get-Content $path)
 $oldIP = ($xml.configuration.appSettings.add | Where-Object {$_.key -eq "NCacheServer.BindToIP"} | Select value) | Select -ExpandProperty "value"
 $newIP = $ipaddress = $(ipconfig | where {$_ -match 'IPv4.+\s(\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3})' } | out-null; $Matches[1]);
 
+$publishcountersTag = @'
+<add key="NCacheServer.PublishCountersToCacheHost" value="True"/>
+'@
+$xmlFrag=$xml.CreateDocumentFragment()
+$xmlFrag.InnerXml=$publishcountersTag
+$node = $xml.SelectSingleNode('//appSettings')
+$node.AppendChild($xmlFrag)
+$xml.Save($path)
+
 #::-----------------------------------------------------------------------
 Write-Host "";
 Write-Output "CHANGING CONFIGURATIONS";

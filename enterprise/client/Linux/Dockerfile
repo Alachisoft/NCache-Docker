@@ -1,5 +1,5 @@
 # Setting base image for NCache.
-FROM microsoft/dotnet:2.1-runtime
+FROM microsoft/dotnet:2.2-runtime
 
 # Setting the enviornment variable so the NCache install script knows that it's running inside a container.
 ENV container ncachedocker
