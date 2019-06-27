@@ -15,10 +15,6 @@
 *   `professional-server-5.0`
 *   `professional-server-4.9.1`
 
-#### NCache Open Source
-
-*   `opensource-server-5.0`
-*   `opensource-server-4.9.1`
 
 ### Windows Nano Server Tags
 
@@ -35,9 +31,6 @@
 
 *   `professional-server-linux-5.0`
 
-#### NCache Open Source
-
-*   `opensource-server-linux-5.0`
 
 ## Docker Commands for NCache
 
@@ -61,14 +54,6 @@ Following commands can be used to pull images with different editions of NCache:
 *   For NCache 5.0 Professional Server Edition on Linux Debian use  
     `docker pull alachisoft/ncache:professional-server-linux-5.0`
 
-### Open Source
-
-*   For NCache 5.0 OpenSource Server Edition on Windows Server Core use 
-    `docker pull alachisoft/ncache:opensource-server-5.0`
-  
-*   For NCache 5.0 OpenSource Server Edition on Linux Debian use  
-    `docker pull alachisoft/ncache:opensource-server-linux-5.0`
-
 
 ## Dockerfile Links
 
@@ -82,10 +67,6 @@ In order to create custom Docker images, Dockerfiles can be found at the follwin
 *   [NCache Professional Client 5.0 For Windows Server Core](https://github.com/Alachisoft/NCache-Docker/blob/master/professional/client/WindowServerCore/Dockerfile)
 *   [NCache Professional Server 5.0 For Linux](https://github.com/Alachisoft/NCache-Docker/blob/master/professional/server/Linux/Dockerfile)
 *   [NCache Professional Client 5.0 For Linux](https://github.com/Alachisoft/NCache-Docker/blob/master/professional/client/Linux/Dockerfile)
-*   [NCache Open Source Server 5.0 For Windows Server Core](https://github.com/Alachisoft/NCache-Docker/blob/master/opensource/server/WindowServerCore/Dockerfile)
-*   [NCache Open Source Client 5.0 For Windows Server Core](https://github.com/Alachisoft/NCache-Docker/blob/master/opensource/client/WindowServerCore/Dockerfile)
-*   [NCache Open Source Server 5.0 For Linux](https://github.com/Alachisoft/NCache-Docker/blob/master/opensource/server/Linux/Dockerfile)
-*   [NCache Open Source Client 5.0 For Linux](https://github.com/Alachisoft/NCache-Docker/blob/master/opensource/client/Linux/Dockerfile)
 
 ## What is NCache?
 
