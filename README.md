@@ -61,7 +61,7 @@ If you have any problems with or questions about this image, please contact us t
 
 ## Licenses
 
-*   NCache Enterprise and NCache Professional are  available **free for 10 days with all features and no performance or other limitations**. When the NCache image is launched for the first time, your 10-day free trial starts, without requiring any licensing activation. 
+*   NCache Enterprise is available **free for 10 days with all features and no performance or other limitations**. When the NCache image is launched for the first time, your 10-day free trial starts, without requiring any licensing activation. 
 To extend your free trial for another 60 days, please contact sales@alachisoft.com. They will provide you a fully working 60 day license key, which you then activate on all your cache servers.
 Upon purchase you will receive an annual subscription license key. Entering the annual subscription license key converts the product from evaluation mode to a purchased copy without any re-installation. And, the product works for one or more years (based on how many years subscription you have purchased). And, at the end of this subscription period you must renew the subscription or NCache stops working. However, you’re given ample alerts at renewal time.
 
