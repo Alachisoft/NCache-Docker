@@ -10,12 +10,6 @@
 *   `enterprise-server-5.0`
 *   `enterprise-server-4.9.1`
 
-#### NCache Professional
-
-*   `professional-server-5.0`
-*   `professional-server-4.9.1`
-
-
 ### Windows Nano Server Tags
 
 *   `enterprise-server-nano-4.9.1`
@@ -26,10 +20,6 @@
 
 *   `enterprise-server-linux-5.0`
 *   `enterprise-server-linux-4.9.1`
-
-#### NCache Professional
-
-*   `professional-server-linux-5.0`
 
 
 ## Docker Commands for NCache
@@ -46,14 +36,6 @@ Following commands can be used to pull images with different editions of NCache:
 *   For NCache 5.0 Enterprise Server Edition on Linux Debian use  
     `docker pull alachisoft/ncache:enterprise-server-linux-5.0`
 
-### Professional
-
-*   For NCache 5.0 Professional Server Edition on Windows Server Core use 
-    `docker pull alachisoft/ncache:professional-server-5.0`
-  
-*   For NCache 5.0 Professional Server Edition on Linux Debian use  
-    `docker pull alachisoft/ncache:professional-server-linux-5.0`
-
 
 ## Dockerfile Links
 
@@ -63,10 +45,7 @@ In order to create custom Docker images, Dockerfiles can be found at the follwin
 *   [NCache Enterprise Client 5.0 For Windows Server Core](https://github.com/Alachisoft/NCache-Docker/blob/master/enterprise/client/WindowServerCore/Dockerfile)
 *   [NCache Enterprise Server 5.0 For Linux](https://github.com/Alachisoft/NCache-Docker/blob/master/enterprise/server/Linux/Dockerfile)
 *   [NCache Enterprise Client 5.0 For Linux](https://github.com/Alachisoft/NCache-Docker/blob/master/enterprise/client/Linux/Dockerfile)
-*   [NCache Professional Server 5.0 For Windows Server Core](https://github.com/Alachisoft/NCache-Docker/blob/master/professional/server/WindowServerCore/Dockerfile)
-*   [NCache Professional Client 5.0 For Windows Server Core](https://github.com/Alachisoft/NCache-Docker/blob/master/professional/client/WindowServerCore/Dockerfile)
-*   [NCache Professional Server 5.0 For Linux](https://github.com/Alachisoft/NCache-Docker/blob/master/professional/server/Linux/Dockerfile)
-*   [NCache Professional Client 5.0 For Linux](https://github.com/Alachisoft/NCache-Docker/blob/master/professional/client/Linux/Dockerfile)
+
 
 ## What is NCache?
 
