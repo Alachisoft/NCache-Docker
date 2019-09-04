@@ -46,7 +46,7 @@ RUN apt-get update &&\
 #		Enterprise Server Install mode = "0"
 #		Enterprise Remote Client Install mode = "3"
 RUN chmod +x installncache.sh &&\
-    ./installncache.sh --installmode "0" --evalkey "XXXXXXXXXX" --firstname "John" --lastname "Smith" --email "john@alachisoft.com" --installpath "/opt" --force --password "xxxxxxxx" 
+    ./installncache.sh --firstname "John" --lastname "Smith" --email "john@alachisoft.com" --company "Alachisoft" --evalkey "xxxxxxxx" --installpath /opt --force --password "xxxxxxxx" --installmode 0 
 
 # Currently, the IP during NCache installation is stored in the configuration files and it can not be made static at that point.
 # However, the IP can be made static once the container is started.
