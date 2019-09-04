@@ -8,8 +8,8 @@ ENV container ncachedocker
 WORKDIR /app
 
 # Make sure that the 2 folders ("resources" and "setup") exist in the same directory as the Dockerfile.
-# Make sure that "ipbinding.sh" script resides in the "resources" folder.
 # Make sure that "startup.sh" script resides in the "resources" folder.
+# Make sure that "ipbinding.sh" script resides in the "resources" folder.
 # Make sure that "installncache.sh" script resides in the "setup" folder.
 # Make sure that NCache Linux setup (.tar.gz) resides in the "setup" folder. It can be downloaded from http://www.alachisoft.com/download-ncache.html.
 # Copying resources and setups into the work directory of the container.
@@ -40,7 +40,7 @@ RUN apt-get update &&\
 #		Enterprise Server Install mode = "0"
 #		Enterprise Remote Client Install mode = "3"
 RUN chmod +x installncache.sh &&\
-    ./installncache.sh --installmode "3" --firstname "John" --lastname "Smith" --email "john@alachisoft.com" --installpath "/opt" --force --password "xxxxxxxx" 
+    ./installncache.sh --firstname "John" --lastname "Smith" --email "john@alachisoft.com" --company "Alachisoft" --installpath /opt --force --password "xxxxxxxx" --installmode 3 
 
 # Currently, the IP during NCache installation is stored in the configuration files and it can not be made static at that point.
 # However, the IP can be made static once the container is started.

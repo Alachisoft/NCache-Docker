@@ -25,6 +25,10 @@ while [ "$1" != "" ]; do
 			EMAIL=$1
 			;;
 
+	-c | --company )	shift
+			COMPANY=$1
+			;;
+
 	-k | --evalkey )	shift
 			KEY=$1
 			;;
@@ -71,13 +75,13 @@ fi
 # Setting ncache install directory
 sed -i "s|<DESTINATION>|$DESTINATION|g" "/app/ipbinding.sh"
 
-# Extracting and installing NCache
-tar -zxf ncache.ent.netcore.tar.gz
-cd ncache-enterprise-5.0-dotnet
+# Untaring and installing NCache
+tar -zxf ncache-enterprise-5.0.1-dotnet.tar.gz
+cd ncache-enterprise-5.0.1-dotnet
 
-./install  --installmode $INSTALLMODE --firstname $FIRST_NAME --lastname $LAST_NAME --email $EMAIL --installpath $DESTINATION --force --password $PASSWORD
+./install --firstname $FIRST_NAME --lastname $LAST_NAME --email $EMAIL --company $COMPANY --installpath $DESTINATION --force --password $PASSWORD --installmode $INSTALLMODE
 
 # Removing installation resources
-rm /app/ncache.ent.netcore.tar.gz
-rm -r /app/ncache-enterprise-5.0-dotnet
+rm /app/ncache-enterprise-5.0.1-dotnet.tar.gz
+rm -r /app/ncache-enterprise-5.0.1-dotnet
 rm -f /app/installncache.sh
