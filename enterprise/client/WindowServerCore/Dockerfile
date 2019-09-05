@@ -17,6 +17,8 @@ COPY setup .
 EXPOSE 9800
 # Exposing the port at which NCache service will listen for incoming management connection requests (NCache Manager, Monitor and Tools).
 EXPOSE 8250
+# Exposing the port at which NCache Web Manager will listen.
+EXPOSE 8251
 
 # Installing Microsoft Visual C++ 2010 x64 Redistributable (Prerequisite of NCache).
 RUN vcredist_x64.exe /norestart /q

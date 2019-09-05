@@ -21,7 +21,8 @@ EXPOSE 8250
 EXPOSE 9900
 # Exposing the port at which Bridge service will listen for incoming Management connection requests (NCache Manager and Tools).
 EXPOSE 8260
-
+# Exposing the port at which web manager will listen.
+EXPOSE 8251
 # Installing Microsoft Visual C++ 2010 x64 Redistributable (Prerequisite of NCache).
 RUN vcredist_x64.exe /norestart /q
 
