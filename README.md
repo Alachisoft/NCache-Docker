@@ -7,8 +7,10 @@
 #### NCache Enterprise
 
 *   `latest`
+*   `enterprise-server-5.0.1`
 *   `enterprise-server-5.0`
 *   `enterprise-server-4.9.1`
+
 
 ### Windows Nano Server Tags
 
@@ -18,6 +20,7 @@
 
 #### NCache Enterprise
 
+*   `enterprise-server-linux-5.0.1`
 *   `enterprise-server-linux-5.0`
 *   `enterprise-server-linux-4.9.1`
 
@@ -28,23 +31,24 @@ Following commands can be used to pull images with different editions of NCache:
 
 ### Enterprise
 
-*   For NCache 5.0 Enterprise Server Edition on Windows Server Core use  
+*   For NCache Enterprise Server Edition on Windows Server Core use  
 	`docker pull alachisoft/ncache:latest`  
     or  
-    `docker pull alachisoft/ncache:enterprise-server-5.0`
+    `docker pull alachisoft/ncache:enterprise-server-5.0.1`
   
-*   For NCache 5.0 Enterprise Server Edition on Linux Debian use  
-    `docker pull alachisoft/ncache:enterprise-server-linux-5.0`
+*   For NCache Enterprise Server Edition on Linux Debian use  
+    `docker pull alachisoft/ncache:enterprise-server-linux-5.0.1`
+
 
 
 ## Dockerfile Links
 
 In order to create custom Docker images, Dockerfiles can be found at the follwing [GitHub](https://github.com/Alachisoft/NCache-Docker) links:
 
-*   [NCache Enterprise Server 5.0 For Windows Server Core](https://github.com/Alachisoft/NCache-Docker/blob/master/enterprise/server/WindowServerCore/Dockerfile)
-*   [NCache Enterprise Client 5.0 For Windows Server Core](https://github.com/Alachisoft/NCache-Docker/blob/master/enterprise/client/WindowServerCore/Dockerfile)
-*   [NCache Enterprise Server 5.0 For Linux](https://github.com/Alachisoft/NCache-Docker/blob/master/enterprise/server/Linux/Dockerfile)
-*   [NCache Enterprise Client 5.0 For Linux](https://github.com/Alachisoft/NCache-Docker/blob/master/enterprise/client/Linux/Dockerfile)
+*   [NCache Enterprise Server For Windows Server Core](https://github.com/Alachisoft/NCache-Docker/blob/master/enterprise/server/WindowServerCore/Dockerfile)
+*   [NCache Enterprise Client For Windows Server Core](https://github.com/Alachisoft/NCache-Docker/blob/master/enterprise/client/WindowServerCore/Dockerfile)
+*   [NCache Enterprise Server For Linux](https://github.com/Alachisoft/NCache-Docker/blob/master/enterprise/server/Linux/Dockerfile)
+*   [NCache Enterprise Client For Linux](https://github.com/Alachisoft/NCache-Docker/blob/master/enterprise/client/Linux/Dockerfile)
 
 
 ## What is NCache?
@@ -61,7 +65,7 @@ If you have any problems with or questions about this image, please contact us t
 
 ## Licenses
 
-*   NCache Enterprise is available **free for 10 days with all features and no performance or other limitations**. When the NCache image is launched for the first time, your 10-day free trial starts, without requiring any licensing activation. 
+*   NCache Enterprise and NCache Professional are  available **free for 10 days with all features and no performance or other limitations**. When the NCache image is launched for the first time, your 10-day free trial starts, without requiring any licensing activation. 
 To extend your free trial for another 60 days, please contact sales@alachisoft.com. They will provide you a fully working 60 day license key, which you then activate on all your cache servers.
 Upon purchase you will receive an annual subscription license key. Entering the annual subscription license key converts the product from evaluation mode to a purchased copy without any re-installation. And, the product works for one or more years (based on how many years subscription you have purchased). And, at the end of this subscription period you must renew the subscription or NCache stops working. However, you’re given ample alerts at renewal time.
 
