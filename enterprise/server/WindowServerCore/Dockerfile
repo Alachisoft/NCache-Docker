@@ -13,16 +13,13 @@ COPY resources .
 COPY setup .
 
 # Exposing ports used by NCache for communication.
-# Exposing the port at which NCache service will listen for incoming client connection requests.
-EXPOSE 9800
-# Exposing the port at which NCache service will listen for incoming management connection requests (NCache Manager, Monitor and Tools).
-EXPOSE 8250
-# Exposing the port at which Bridge service will listen for incoming connection requests from cache processes.
-EXPOSE 9900
-# Exposing the port at which Bridge service will listen for incoming Management connection requests (NCache Manager and Tools).
-EXPOSE 8260
-# Exposing the port at which web manager will listen.
-EXPOSE 8251
+# Exposing port 9800 at which NCache service will listen for incoming client connection requests.
+# Exposing the port 8250 at which NCache service will listen for incoming management connection requests (NCache Manager, Monitor and Tools).
+# Exposing the port 9900 at which Bridge service will listen for incoming connection requests from cache processes.
+# Exposing the port 8260 at which Bridge service will listen for incoming Management connection requests (NCache Manager and Tools).
+# Exposing the port 8251 at which web manager will listen.
+EXPOSE 9800 8250 9900 8260 8251
+
 # Installing Microsoft Visual C++ 2010 x64 Redistributable (Prerequisite of NCache).
 RUN vcredist_x64.exe /norestart /q
 
@@ -44,7 +41,7 @@ RUN msiexec /i ncache.ent.x64.msi INSTALLMODE="0" KEY="XXXXXXXXXX" USERFIRSTNAME
 # However, the IP can be made static once the container is started.
 # An IP Binding change task is scheduled to run when the container instance is started. This task replaces the IP with the actual IP assigned to the container.
 # Creating one time executing IP Binding task that will change the IP in NCache Configuration files on the first time the container is started.
-RUN schtasks /Create /TN IPBinding /SC ONSTART /TR "c:\WINDOWS\system32\WindowsPowerShell\v1.0\powershell.exe C:\app\IPBinding.ps1" /ru SYSTEM
+RUN C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe -ExecutionPolicy UnRestricted -File "C:\app\CreateScheduledTasks.ps1"
 
 # Entry point for the container, once all the required configurations have been made.
 CMD start -Verbose
