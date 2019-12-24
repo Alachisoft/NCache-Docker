@@ -2,8 +2,9 @@
 
 if [ -e /app/ipbinding.sh ]
 then
-	chmod +x /app/ipbinding.sh
 	/app/ipbinding.sh
 fi
 
-service ncached start
+/usr/share/dotnet/dotnet /opt/ncache/bin/service/Alachisoft.NCache.Daemon.dll /opt/ncache
+
+sleep infinity

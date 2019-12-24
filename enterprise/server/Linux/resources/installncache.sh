@@ -24,10 +24,10 @@ while [ "$1" != "" ]; do
 	-e | --email )		shift
 			EMAIL=$1
 			;;
-
 	-c | --company )	shift
 			COMPANY=$1
 			;;
+
 
 	-k | --evalkey )	shift
 			KEY=$1
@@ -73,15 +73,21 @@ then
 fi
 
 # Setting ncache install directory
-sed -i "s|<DESTINATION>|$DESTINATION|g" "/app/ipbinding.sh"
+printf "%s\n" ",s|<DESTINATION>|$DESTINATION|g" wq | ed -s ipbinding.sh
 
 # Untaring and installing NCache
-tar -zxf ncache-enterprise-5.0.1-dotnet.tar.gz
-cd ncache-enterprise-5.0.1-dotnet
+tar -zxf ncache.ent.netcore.tar.gz
+cd ncache5.0-enterprise-dotnet
 
-./install --firstname $FIRST_NAME --lastname $LAST_NAME --email $EMAIL --company $COMPANY --installpath $DESTINATION --force --password $PASSWORD --installmode $INSTALLMODE
+./install --firstname $FIRST_NAME --lastname $LAST_NAME --email $EMAIL --company $COMPANY --evalkey $KEY --installpath $DESTINATION --force --password $PASSWORD --installmode $INSTALLMODE
 
+# Updating permissions and ownership
+chmod -R 775 /opt/ncache/bin/tools/web /opt/ncache/bin/service
+chown -R ncache:root /app /opt/ncache
+usermod -a -G root ncache
+
+cd ..
 # Removing installation resources
-rm /app/ncache-enterprise-5.0.1-dotnet.tar.gz
-rm -r /app/ncache-enterprise-5.0.1-dotnet
-rm -f /app/installncache.sh
+rm ncache.ent.netcore.tar.gz
+rm -r ncache5.0-enterprise-dotnet/
+rm -f installncache.sh
