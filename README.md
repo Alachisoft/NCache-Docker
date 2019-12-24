@@ -39,7 +39,7 @@ Following commands can be used to pull images with different editions of NCache:
     `docker pull alachisoft/ncache:enterprise-server-5.0.2`
   
 *   For NCache Enterprise Server Edition on Linux Debian use  
-    `docker pull alachisoft/ncache:enterprise-server-linux-5.0.1`
+    `docker pull alachisoft/ncache:enterprise-server-linux-5.0.2`
 
 
 
