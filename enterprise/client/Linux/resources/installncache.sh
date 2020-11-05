@@ -77,7 +77,7 @@ printf "%s\n" ",s|<DESTINATION>|$DESTINATION|g" wq | ed -s ipbinding.sh
 
 # Untaring and installing NCache
 tar -zxf ncache.ent.netcore.tar.gz
-cd ncache5.0-enterprise-dotnet
+cd ncache5.0.4-enterprise-dotnet
 
 ./install --firstname $FIRST_NAME --lastname $LAST_NAME --email $EMAIL --company $COMPANY --installpath $DESTINATION --force --password $PASSWORD --installmode $INSTALLMODE
 
@@ -89,5 +89,5 @@ usermod -a -G root ncache
 cd ..
 # Removing installation resources
 rm ncache.ent.netcore.tar.gz
-rm -r ncache5.0-enterprise-dotnet/
+rm -r ncache5.0.4-enterprise-dotnet/
 rm -f installncache.sh

@@ -19,9 +19,13 @@ COPY resources .
 EXPOSE 8250 8251 9800 7800-7900 8300-8400 8260 10000-10100
 
 # Make sure your machine has access to internet for installation of packages.
-# Installing package procps (Prerequisite of NCache services). 
-RUN apt-get update &&\
-    apt-get install procps ed -y 
+# Installing package procps and powershell (Prerequisite of NCache services). 
+RUN curl --output packages-microsoft-prod.deb https://packages.microsoft.com/config/debian/10/packages-microsoft-prod.deb \
+ && dpkg -i packages-microsoft-prod.deb \
+ && apt-get update \
+ && apt-get install -y powershell procps ed  \
+  && rm packages-microsoft-prod.deb
+
 
 # Installing NCache Linux setup (.tar.gz).
 # The parameter "--evalkey" is the install key and is sent to user through e-mail once they download NCache setup. In case if user does not get a key, contact us at http://www.alachisoft.com/company/contact-us.html.
