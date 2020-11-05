@@ -7,6 +7,7 @@
 #### NCache Enterprise
 
 *   `latest`
+*   `enterprise-server-5.0.4`
 *   `enterprise-server-5.0.2`
 *   `enterprise-server-5.0.1`
 *   `enterprise-server-5.0`
@@ -21,6 +22,7 @@
 
 #### NCache Enterprise
 
+*   `enterprise-server-linux-5.0.4`
 *   `enterprise-server-linux-5.0.2`
 *   `enterprise-server-linux-5.0.1`
 *   `enterprise-server-linux-5.0`
@@ -36,10 +38,10 @@ Following commands can be used to pull images with different editions of NCache:
 *   For NCache Enterprise Server Edition on Windows Server Core use  
 	`docker pull alachisoft/ncache:latest`  
     or  
-    `docker pull alachisoft/ncache:enterprise-server-5.0.2`
+    `docker pull alachisoft/ncache:enterprise-server-5.0.4`
   
 *   For NCache Enterprise Server Edition on Linux Debian use  
-    `docker pull alachisoft/ncache:enterprise-server-linux-5.0.2`
+    `docker pull alachisoft/ncache:enterprise-server-linux-5.0.4`
 
 
 
@@ -51,6 +53,9 @@ In order to create custom Docker images, Dockerfiles can be found at the follwin
 *   [NCache Enterprise Client For Windows Server Core](https://github.com/Alachisoft/NCache-Docker/blob/master/enterprise/client/WindowServerCore/Dockerfile)
 *   [NCache Enterprise Server For Linux](https://github.com/Alachisoft/NCache-Docker/blob/master/enterprise/server/Linux/Dockerfile)
 *   [NCache Enterprise Client For Linux](https://github.com/Alachisoft/NCache-Docker/blob/master/enterprise/client/Linux/Dockerfile)
+*   [NCache Professional Client For Linux](https://github.com/Alachisoft/NCache-Docker/blob/master/professional/client/Linux/Dockerfile)
+*   [NCache Opensource Client For Linux](https://github.com/Alachisoft/NCache-Docker/blob/master/opensource/client/Linux/Dockerfile)
+
 
 
 ## What is NCache?
@@ -67,13 +72,11 @@ If you have any problems with or questions about this image, please contact us t
 
 ## Licenses
 
-*   NCache Enterprise and NCache Professional are  available **free for 10 days with all features and no performance or other limitations**. When the NCache image is launched for the first time, your 10-day free trial starts, without requiring any licensing activation. 
-To extend your free trial for another 60 days, please contact sales@alachisoft.com. They will provide you a fully working 60 day license key, which you then activate on all your cache servers.
-Upon purchase you will receive an annual subscription license key. Entering the annual subscription license key converts the product from evaluation mode to a purchased copy without any re-installation. And, the product works for one or more years (based on how many years subscription you have purchased). And, at the end of this subscription period you must renew the subscription or NCache stops working. However, you’re given ample alerts at renewal time.
+*   NCache Enterprise and NCache Professional are available free for 60 days with all features and no performance or other limitations. When the NCache image is launched for the first time, you are required to register NCache with free evaluation key using PowerShell command 'Register-NCacheEvaluation'. You can contact sales@alachisoft to get a free evaluation key. Upon purchase you will receive an annual subscription license key. Entering the annual subscription license key converts the product from evaluation mode to a purchased copy without any re-installation. And, the product works for one or more years (based on how many years subscription you have purchased). And, at the end of this subscription period you must renew the subscription or NCache stops working. However, you’re given ample alerts at renewal time.
 
 *   NCache docker images for Windows Server Core are based on the [.NET Framework](https://hub.docker.com/r/microsoft/dotnet-framework/) 4.7.2-runtime images which in turn are based on [Windows Server Core docker image](https://hub.docker.com/r/microsoft/windowsservercore/). The Windows licensing is same as mentioned on [Windows Server Core base image](https://hub.docker.com/r/microsoft/windowsservercore/).
 
-*   NCache docker images for Linux are based on the [.NET Core](https://hub.docker.com/r/microsoft/dotnet/) 2.2-runtime image which in turn is based on [Debian docker image](https://hub.docker.com/_/debian/). The Debian licensing is same as mentioned on [Debian base image](https://hub.docker.com/_/debian/).
+*   NCache docker images for Linux are based on the [.NET Core](https://hub.docker.com/r/microsoft/dotnet/) 3.0-runtime image which in turn is based on [Debian docker image](https://hub.docker.com/_/debian/). The Debian licensing is same as mentioned on [Debian base image](https://hub.docker.com/_/debian/).
 
 
 ## Related Repositories
