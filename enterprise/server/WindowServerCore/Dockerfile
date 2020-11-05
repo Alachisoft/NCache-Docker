@@ -18,7 +18,7 @@ COPY setup .
 # Exposing the port 9900 at which Bridge service will listen for incoming connection requests from cache processes.
 # Exposing the port 8260 at which Bridge service will listen for incoming Management connection requests (NCache Manager and Tools).
 # Exposing the port 8251 at which web manager will listen.
-EXPOSE 9800 8250 9900 8260 8251
+EXPOSE 9800 8250 9900 8260 8251 443 80
 
 # Installing Microsoft Visual C++ 2010 x64 Redistributable (Prerequisite of NCache).
 RUN vcredist_x64.exe /norestart /q
