@@ -16,7 +16,7 @@ COPY setup .
 # Exposing port 9800 at which NCache service will listen for incoming client connection requests.
 # Exposing port 8250 at which NCache service will listen for incoming management connection requests (NCache Manager, Monitor and Tools).
 # Exposing port 8251 at which NCache Web Manager will listen.
-EXPOSE 9800 8250 8251
+EXPOSE 9800 8250 8251 443 80
 
 # Installing Microsoft Visual C++ 2010 x64 Redistributable (Prerequisite of NCache).
 RUN vcredist_x64.exe /norestart /q
