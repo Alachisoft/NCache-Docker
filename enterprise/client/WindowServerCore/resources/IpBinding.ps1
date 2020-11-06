@@ -23,12 +23,20 @@ $path = Join-Path -Path (Join-Path -Path $installDir -ChildPath $config) -Childp
 $path = Join-Path -Path (Join-Path -Path $installDir -ChildPath $service) -Childpath "Alachisoft.NCache.Service.exe.config";
 (Get-Content $path) | Foreach-Object {$_ -replace , $oldIP, $newIP}  | Out-File $path
 
+$path = Join-Path -Path (Join-Path -Path $installDir -ChildPath $service) -Childpath "Alachisoft.NCache.BridgeService.exe.config";
+if(Test-Path $path)
+{
+	(Get-Content $path) | Foreach-Object {$_ -replace , $oldIP, $newIP}  | Out-File $path
+}
+
 Write-Host "Configurations are modified successfully.";
 
 
 Write-Host "Starting NCache SVC.";
 Start-Service -Name NCacheSvc;
 Write-Host "Started NCache SVC";
+
+Start-NCacheWebManagementProcess;
 
 # Delete this task from task scheduler
 schtasks /Delete /TN IPBinding /F
