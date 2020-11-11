@@ -33,7 +33,7 @@ RUN apt-get update \
 # The parameter "--installmode" represents the NCache installation mode and has the following values:
 #		OpenSource Remote Client Install mode = "3"
 RUN chmod -R 775 /app \
- && ./installncache.sh --firstname "John" --lastname "Smith" --email "john@alachisoft.com" --company "Alachisoft" --installpath /opt --force --password "xxxxxxxx"
+ && ./installncache.sh --firstname "abc" --lastname "xyz" --email "abc@yourdomain.com" --company "yourcompany" --installpath /opt --force --password "xxxxxxxx"
 
 # Entry point for the container, once all the required configurations have been made.
 ENTRYPOINT ["/app/startup.sh"]

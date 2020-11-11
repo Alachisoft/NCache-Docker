@@ -39,7 +39,7 @@ RUN curl --output packages-microsoft-prod.deb https://packages.microsoft.com/con
 #		Enterprise Server Install mode = "0"
 #		Enterprise Remote Client Install mode = "3"
 RUN chmod -R 775 /app &&\
-    ./installncache.sh --firstname "John" --lastname "Smith" --email "john@alachisoft.com" --company "Alachisoft" --evalkey "xxxxxxxx" --installpath /opt --force --password "xxxxxxxx" --installmode 0 
+    ./installncache.sh --firstname "abc" --lastname "xyz" --email "abc@yourdomain.com" --company "yourcompany" --evalkey "xxxxxxxx" --installpath /opt --force --password "xxxxxxxx" --installmode 0 
 
 # Entry point for the container, once all the required configurations have been made.
 ENTRYPOINT ["/app/startup.sh"]
