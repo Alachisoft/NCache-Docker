@@ -1,2 +1,2 @@
-sudo docker build -t git/ncache:enterprise-client-linux-5.0.4 \
+sudo docker build -t git/ncache:enterprise-client-linux-5.2 \
  .
