@@ -79,7 +79,7 @@ printf "%s\n" ",s|<DESTINATION>|$DESTINATION|g" wq | ed -s ipbinding.sh
 tar -zxf ncache-enterprise.tar.gz
 cd ncache-enterprise
 
-./install --firstname $FIRST_NAME --lastname $LAST_NAME --email $EMAIL --company $COMPANY --installpath $DESTINATION --force --password $PASSWORD --installmode $INSTALLMODE
+./install --firstname $FIRST_NAME --lastname $LAST_NAME --email $EMAIL --company $COMPANY --installpath $DESTINATION --force --password $PASSWORD --installmode $INSTALLMODE --java_home /usr/lib/jvm/java-11-openjdk-amd64/ 
 
 # Updating permissions and ownership
 chmod -R 775 /opt/ncache/bin/tools/web /opt/ncache/bin/service

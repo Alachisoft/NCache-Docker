@@ -1,9 +1,6 @@
 # Setting base image for NCache.
 FROM mcr.microsoft.com/dotnet/sdk:3.1
 
-# Setting the enviornment variable so the NCache install script knows that it's running inside a container.
-ENV container ncachedocker
-
 # Setting work directory to copy setups and resources for configuring NCache.
 WORKDIR /app
 
@@ -20,9 +17,6 @@ EXPOSE 8250 8251 9800 8300-8400
 
 # Make sure your machine has access to internet for installation of packages.
 # Installing package procps (Prerequisite of NCache services). 
-RUN apt-get update \
- && apt-get install procps ed -y 
-
 # Installing NCache Linux setup (.tar.gz).
 # The parameter "--evalkey" is the install key and is sent to user through e-mail once they download NCache setup. In case if user does not get a key, contact us at http://www.alachisoft.com/company/contact-us.html.
 # The parameter "--firstname" represents the first name of the user.
@@ -35,6 +29,8 @@ RUN apt-get update \
 #		Enterprise Server Install mode = "0"
 #		Enterprise Remote Client Install mode = "3"
 RUN chmod -R 775 /app \
+ && apt-get update \
+ && apt-get install procps ed -y openjdk-11-jre-headless \
  && ./installncache.sh --firstname "abc" --lastname "xyz" --email "abc@yourdomain.com" --company "yourcompany" --installpath /opt --force --password "xxxxxxxx" --installmode 3
 
 # Entry point for the container, once all the required configurations have been made.
