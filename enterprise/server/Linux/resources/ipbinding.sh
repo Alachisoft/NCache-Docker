@@ -1,7 +1,7 @@
 #!/bin/sh
 
 ip="$(hostname -i)"
-DESTINATION=<DESTINATION>
+DESTINATION=/opt
 
 cd $DESTINATION/ncache/bin/service
 

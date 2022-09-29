@@ -1,9 +1,5 @@
 # Setting base image for NCache.
-FROM mcr.microsoft.com/dotnet/sdk:3.1
-# BUILD TIME ARGUMENTS
-ARG BUILD_DATE 
-ARG BUILD_VERSION
-ARG SETUP_HTTP_PATH
+FROM mcr.microsoft.com/dotnet/sdk:6.0
 
 # Setting work directory to copy setups and resources for configuring NCache.
 WORKDIR /app
@@ -18,29 +14,19 @@ WORKDIR /app
 COPY resources .
 
 # Exposing ports used by NCache for communication.
-EXPOSE 8250-8260 9800 7800-7850 8300-8350 9900 10000-10010
+EXPOSE 8250-8260 9800 7800-7900 8300-8400 9900 10000-10100
 
 # Installing NCache Linux setup (.tar.gz).
 # The parameter "--firstname" represents the first name of the user.
 # The parameter "--lastname" represents the last name of the user.
-# The parameter "--company" represents the first name of the user's compamy.
-# The parameter "--email" represents the email of the user against which the evaluation key is register.
-# The parameter "--evalkey" represents the evaluation key of the ncache.
-# The parameter "--installpath" represents the path where you want to install ncache.
-RUN apt-get update \
- && apt-get install -y procps ed apt-transport-https openjdk-11-jre-headless \
- && curl -SL --output ncache-enterprise.tar.gz $SETUP_HTTP_PATH \
- && ./installncache.sh --firstname "Enterprise" --lastname "Server" --company "yourcompany" --email "abc@yourdomain.com" --evalkey "xxxxxxxx" --installpath /opt  --installmode 0
-
-# LABELING IMAGE
-LABEL org.label-schema.name="NCache Enterprise" \
- org.label-schema.version=$BUILD_VERSION \
- org.label-schema.description="NCache: Highly Scalable Distributed Cache for .NET" \
- org.label-schema.vendor="Alachisoft" \
- org.label-schema.url="https://www.alachisoft.com/ncache/" \
- org.label-schema.maintainer="support@alachisoft.com" \
- org.label-schema.build-date=$BUILD_DATE \
- org.label-schema.schema-version="1.0"
+# The parameter "--company" Provide your company name.
+# The parameter "--email" Provide your email address.
+# The parameter "--installkey" Installation key provided by alachisoft.com.
+RUN  chmod -R 775 /app  \
+ && apt-get update \
+ && apt-get install -y procps ed apt-transport-https \
+ && apt-get install procps ed -y openjdk-11-jre-headless \
+ && ./installncache.sh --firstname "YOUR_FIRST_NAME" --lastname "YOUR_LAST_NAME" --company "YOUR_COMPANY" --email "YOUR_EMAIL" --installkey "******" --installmode "server"
 
 # Switching the current user to ncache user
 USER ncache
