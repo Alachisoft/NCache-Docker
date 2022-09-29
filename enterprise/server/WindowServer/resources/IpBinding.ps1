@@ -49,10 +49,4 @@ Write-Host "Starting NCache SVC.";
 Start-Service -Name NCacheSvc;
 Write-Host "Started NCache SVC";
 
-# Delete this task from task scheduler
-schtasks /Delete /TN IPBinding /F
-
 Set-ExecutionPolicy RemoteSigned -Force
-
-# this script deletes itself.
-Remove-Item $MyINvocation.InvocationName
