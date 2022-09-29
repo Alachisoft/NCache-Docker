@@ -32,7 +32,6 @@ RUN "c:\WINDOWS\system32\WindowsPowerShell\v1.0\powershell.exe Start-Process -fi
  RUN "c:\WINDOWS\system32\WindowsPowerShell\v1.0\powershell.exe Start-Process -filepath "<filepath to jdk>" -NoNewWindow -Wait -PassThru -ArgumentList '/s'"
 # Installing NCache setup.
 # The parameter "INSTALLMODE" represents the NCache installation mode and has the following values:
-# Rename this parameter to "EDITION" if you are building image for NCache version 4.8 or older.
 #		Enterprise Server Install mode = "0"
 #		Enterprise Remote Client Install mode = "3"
 # The parameter "KEY" is the install key and is sent to user through e-mail once they download NCache setup. In case if user does not get a key, contact us at http://www.alachisoft.com/company/contact-us.html.
