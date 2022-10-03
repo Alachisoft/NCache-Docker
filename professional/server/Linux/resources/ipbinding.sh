@@ -12,4 +12,3 @@ cd $DESTINATION/ncache/config
 printf "%s\n" ",s/<IP>/$ip/g" wq | ed -s client.ncconf
 printf "%s\n" ",s/<IP>/$ip/g" wq | ed -s config.ncconf 
 
-rm -f /app/ipbinding.sh
