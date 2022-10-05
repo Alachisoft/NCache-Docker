@@ -6,7 +6,7 @@ $installDir = ${env:NCHOME};
 $config = "config\";
 $service = "bin\service";
 
-$path = Join-Path -Path (Join-Path -Path $installDir -ChildPath $service) -Childpath "Alachisoft.NCache.Service.exe.config";
+$path = Join-Path -Path (Join-Path -Path $installDir -ChildPath $service) -Childpath "Alachisoft.NCache.Service.dll.config";
 $xml = [xml](Get-Content $path)
 $oldIP = ($xml.configuration.appSettings.add | Where-Object {$_.key -eq "NCacheServer.BindToClusterIP"} | Select value) | Select -ExpandProperty "value"
 $newIP = $ipaddress = $(ipconfig | where {$_ -match 'IPv4.+\s(\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3})' } | out-null; $Matches[1]);
@@ -20,10 +20,10 @@ $path = Join-Path -Path (Join-Path -Path $installDir -ChildPath $config) -Childp
 $path = Join-Path -Path (Join-Path -Path $installDir -ChildPath $config) -Childpath "config.ncconf";
 (Get-Content $path) | Foreach-Object {$_ -replace , $oldIP, $newIP}  | Out-File $path
 
-$path = Join-Path -Path (Join-Path -Path $installDir -ChildPath $service) -Childpath "Alachisoft.NCache.Service.exe.config";
+$path = Join-Path -Path (Join-Path -Path $installDir -ChildPath $service) -Childpath "Alachisoft.NCache.Service.dll.config";
 (Get-Content $path) | Foreach-Object {$_ -replace , $oldIP, $newIP}  | Out-File $path
 
-$path = Join-Path -Path (Join-Path -Path $installDir -ChildPath $service) -Childpath "Alachisoft.NCache.BridgeService.exe.config";
+$path = Join-Path -Path (Join-Path -Path $installDir -ChildPath $service) -Childpath "Alachisoft.NCache.BridgeService.dll.config";
 if(Test-Path $path)
 {
 	(Get-Content $path) | Foreach-Object {$_ -replace , $oldIP, $newIP}  | Out-File $path
@@ -36,8 +36,6 @@ Write-Host "Starting NCache SVC.";
 Start-Service -Name NCacheSvc;
 Write-Host "Started NCache SVC";
 
-# Delete this task from task scheduler
-schtasks /Delete /TN IPBinding /F
 
 Set-ExecutionPolicy RemoteSigned -Force
 
