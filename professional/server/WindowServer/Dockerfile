@@ -1,5 +1,5 @@
 # Setting base image for NCache. Uses Windows Server Core.
-FROM mcr.microsoft.com/dotnet/framework/runtime:4.7.2
+FROM mcr.microsoft.com/windows/servercore:ltsc2022
 
 # Setting work directory to copy setups and resources for configuring NCache.
 WORKDIR /app
@@ -16,10 +16,14 @@ COPY setup .
 # Exposing port 9800 at which NCache service will listen for incoming client connection requests.
 # Exposing the port 8250 at which NCache service will listen for incoming management connection requests (NCache Manager, Monitor and Tools).
 # Exposing the port 9900 at which Bridge service will listen for incoming connection requests from cache processes.
-EXPOSE 9800 8250 9900 443 80
+EXPOSE 8250-8260 9800 7800-7900 8300-8400 9900 10000-10100
 
 # Installing Microsoft Visual C++ 2010 x64 Redistributable (Prerequisite of NCache).
 RUN vcredist_x64.exe /norestart /q
+
+#installing the Dotnet core 6.0 runtime.
+#Dotnet 6.0 can be downloaded from https://dotnet.microsoft.com/en-us/download/dotnet.
+RUN "c:\WINDOWS\system32\WindowsPowerShell\v1.0\powershell.exe Start-Process -filepath dotnet-sdk-6.0.100-win-x64.exe -NoNewWindow -Wait -PassThru -ArgumentList '/s'"
 
 # Installing NCache setup.
 # The parameter "INSTALLMODE" represents the NCache installation mode and has the following values:
@@ -35,11 +39,8 @@ RUN vcredist_x64.exe /norestart /q
 # the parameter "/qn" specifies that NCache will be installed silently without user interaction and will not prompt the user for anything.
 RUN msiexec /i ncache.pro.x64.msi INSTALLMODE="0" KEY="XXXXXXXXXX" USERFIRSTNAME="abc" USERLASTNAME="xyz" COMPANYNAME="yourcompany" EMAILADDRESS="abc@yourdomain.com" INSTALLDIR="C:\Program Files\NCache" /qn
 
-# Currently, the IP during NCache installation is stored in the configuration files and it can not be made static at that point.
-# However, the IP can be made static once the container is started.
-# An IP Binding change task is scheduled to run when the container instance is started. This task replaces the IP with the actual IP assigned to the container.
-# Creating one time executing IP Binding task that will change the IP in NCache Configuration files on the first time the container is started.
-RUN C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe -ExecutionPolicy UnRestricted -File "C:\app\CreateScheduledTasks.ps1"
+SHELL ["powershell"]
+RUN Remove-Item c:/app/ncache.pro.x64.msi
 
 # Entry point for the container, once all the required configurations have been made.
-CMD start -Verbose
+ENTRYPOINT ["powershell.exe", "C:/app/IpBinding.ps1" ]
