@@ -27,12 +27,15 @@ Write-Host "Configurations are modified successfully.";
 
 
 Write-Host "Starting NCache SVC.";
-Start-Service -Name NCacheSvc;
+Start-Process -filepath "C:\Program Files\NCache\bin\service\Alachisoft.NCache.Service.exe" -NoNewWindow -wait -PassThru -ArgumentList '/s';
 Write-Host "Started NCache SVC";
 
-Start-NCacheWebManagementProcess;
 
 Set-ExecutionPolicy RemoteSigned -Force
 
 # this script deletes itself.
-Remove-Item $MyINvocation.InvocationName
+#Remove-Item $MyINvocation.InvocationName
+
+while ($true) {
+	Start-Sleep -Seconds 500
+}
