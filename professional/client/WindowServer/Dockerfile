@@ -23,7 +23,7 @@ RUN vcredist_x64.exe /norestart /q
 
 #installing the Dotnet core 6.0 runtime.
 #Dotnet 6.0 can be downloaded from https://dotnet.microsoft.com/en-us/download/dotnet.
-RUN "c:\WINDOWS\system32\WindowsPowerShell\v1.0\powershell.exe Start-Process -filepath dotnet-sdk-6.0.100-win-x64.exe -NoNewWindow -Wait -PassThru -ArgumentList '/s'"
+RUN "c:\WINDOWS\system32\WindowsPowerShell\v1.0\powershell.exe Start-Process -filepath "<filepath to dotnet 6.0 >" -NoNewWindow -Wait -PassThru -ArgumentList '/s'"
 # Installing NCache setup.
 # The parameter "INSTALLMODE" represents the NCache installation mode and has the following values:
 # Rename this parameter to "EDITION" if you are building image for NCache version 4.8 or older.

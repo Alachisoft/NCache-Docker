@@ -32,3 +32,7 @@ Write-Host "Started NCache SVC";
 
 
 Set-ExecutionPolicy RemoteSigned -Force
+
+while ($true) {
+	Start-Sleep -Seconds 500
+}
