@@ -35,9 +35,9 @@ RUN "powershell.exe Start-Process -filepath "<filepath to jdk from resources fol
 # The parameter "EMAILADDRESS" represents the e-mail address of the user.
 # The parameter "INSTALLDIR" and "TARGETDIR" represents the installation directory where NCache will be installed.
 # the parameter "/qn" specifies that NCache will be installed silently without user interaction and will not prompt the user for anything.
-RUN msiexec /i ncache.ent.x64.msi INSTALLMODE="0" KEY="XXXXXXXXXX" USERFIRSTNAME="John" USERLASTNAME="Smith" COMPANYNAME="youcompany" EMAILADDRESS="john_smith@yourdomain.com" TARGETDIR="C:\Program Files\NCache" INSTALLDIR="C:\Program Files\NCache" STARTCACHE="false" /qn
+RUN msiexec /i ncache.ent.net.x64.msi INSTALLMODE="0" KEY="XXXXXXXXXX" USERFIRSTNAME="John" USERLASTNAME="Smith" COMPANYNAME="youcompany" EMAILADDRESS="john_smith@yourdomain.com" TARGETDIR="C:\Program Files\NCache" INSTALLDIR="C:\Program Files\NCache" STARTCACHE="false" /qn
 
-RUN "powershell.exe Remove-Item c:/app/ncache.ent.x64.msi"
+RUN "powershell.exe Remove-Item c:/app/ncache.ent.net.x64.msi"
 
 # Entry point for the container, once all the required configurations have been made.
 ENTRYPOINT ["powershell.exe", "C:/app/IpBinding.ps1" ]
