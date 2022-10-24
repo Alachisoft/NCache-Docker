@@ -19,12 +19,12 @@ COPY resources .
 # Exposing the port 8250-8260 for management operations.
 EXPOSE 8250-8260 9800 7800-7900 8300-8400 9900 10000-10100
 
-#installing the .NET 6.0 runtime.
+# Installing the .NET 6.0 runtime.
 #.NET 6.0 can be downloaded from https://dotnet.microsoft.com/en-us/download/dotnet.
-RUN "powershell.exe Start-Process -filepath "<filepath to .NET 6.0 from resources folder>" -NoNewWindow -Wait -PassThru -ArgumentList '/s'"
+RUN "powershell.exe Start-Process -Filepath "<Filepath to .NET 6.0 from resources folder>" -NoNewWindow -Wait -PassThru -ArgumentList '/s'"
 
 # Installing Java-11 or greater(Prerequisite of NCache java server side feature).
-#Java jdk cacn donwloaded from https://www.oracle.com/java/technologies/downloads/
+# Java jdk cacn donwloaded from https://www.oracle.com/java/technologies/downloads/
 RUN "powershell.exe Start-Process -filepath "<filepath to jdk from resources folder>" -NoNewWindow -Wait -PassThru -ArgumentList '/s'"
 
 # Installing NCache setup.
@@ -34,10 +34,10 @@ RUN "powershell.exe Start-Process -filepath "<filepath to jdk from resources fol
 # The parameter "COMPANYNAME" represents the company the user works for.
 # The parameter "EMAILADDRESS" represents the e-mail address of the user.
 # The parameter "INSTALLDIR" and "TARGETDIR" represents the installation directory where NCache will be installed.
-# the parameter "/qn" specifies that NCache will be installed silently without user interaction and will not prompt the user for anything.
+# The parameter "/qn" specifies that NCache will be installed silently without user interaction and will not prompt the user for anything.
 RUN msiexec /i ncache.ent.net.x64.msi INSTALLMODE="0" KEY="XXXXXXXXXX" USERFIRSTNAME="John" USERLASTNAME="Smith" COMPANYNAME="youcompany" EMAILADDRESS="john_smith@yourdomain.com" TARGETDIR="C:\Program Files\NCache" INSTALLDIR="C:\Program Files\NCache" STARTCACHE="false" /qn
 
-RUN "powershell.exe Remove-Item c:/app/ncache.ent.net.x64.msi"
+RUN "powershell.exe Remove-Item C:/app/ncache.ent.net.x64.msi"
 
 # Entry point for the container, once all the required configurations have been made.
-ENTRYPOINT ["powershell.exe", "C:/app/IpBinding.ps1" ]
+ENTRYPOINT ["powershell.exe", "C:/app/StartUp.ps1" ]
