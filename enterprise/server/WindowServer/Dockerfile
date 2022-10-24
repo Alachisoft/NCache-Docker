@@ -17,6 +17,7 @@ COPY resources .
 # Exposing the port 9900 at which Bridge service will listen for incoming connection requests from cache processes.
 # Exposing the port 8260 at which Bridge service will listen for incoming Management connection requests (NCache Manager and Tools).
 # Exposing the port 8250-8260 for management operations.
+# For more information about ports visit https://www.alachisoft.com/resources/docs/ncache/getting-started-guide-windows/open-firewall-tcp.html;
 EXPOSE 8250-8260 9800 7800-7900 8300-8400 9900 10000-10100
 
 # Installing the .NET 6.0 runtime.
@@ -26,6 +27,7 @@ RUN "powershell.exe Start-Process -Filepath "<Filepath to .NET 6.0 from resource
 # Installing Java-11 or greater(Prerequisite of NCache java server side feature).
 # Java jdk cacn donwloaded from https://www.oracle.com/java/technologies/downloads/
 RUN "powershell.exe Start-Process -filepath "<filepath to jdk from resources folder>" -NoNewWindow -Wait -PassThru -ArgumentList '/s'"
+ENV JAVA_HOME='C:\Program Files\Java\jdk'
 
 # Installing NCache setup.
 # The parameter "KEY" is the install key and is sent to user through e-mail once they download NCache setup. In case if user does not get a key, contact us at http://www.alachisoft.com/company/contact-us.html.

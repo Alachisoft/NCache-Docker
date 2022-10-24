@@ -14,6 +14,7 @@ COPY resources .
 # Exposing port 9800 at which NCache service will listen for incoming client connection requests.
 # Exposing the port 8250 at which NCache service will listen for incoming management connection requests (NCache Manager, Monitor and Tools).
 # Exposing the port 8250-8260 for management operations.
+# For more information about ports visit https://www.alachisoft.com/resources/docs/ncache/getting-started-guide-windows/open-firewall-tcp.html;
 EXPOSE 8250-8260 9800 7800-7900 8300-8400
 
 # Installing the .NET 6.0 runtime.
