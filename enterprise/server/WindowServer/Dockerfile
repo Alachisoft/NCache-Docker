@@ -22,11 +22,15 @@ EXPOSE 8250-8260 9800 7800-7900 8300-8400 9900 10000-10100
 
 # Installing the .NET 6.0 runtime.
 #.NET 6.0 can be downloaded from https://dotnet.microsoft.com/en-us/download/dotnet.
-RUN "powershell.exe Start-Process -Filepath "<Filepath to .NET 6.0 from resources folder>" -NoNewWindow -Wait -PassThru -ArgumentList '/s'"
+RUN "powershell.exe Start-Process -Filepath "<Filepath to .NET 6.0 from resources folder>" -NoNewWindow -Wait -PassThru -ArgumentList '/s'; \
+Remove-Item 'Filepath to .NET 6.0 in working directory';"
 
 # Installing Java-11 or greater(Prerequisite of NCache java server side feature).
 # Java jdk cacn donwloaded from https://www.oracle.com/java/technologies/downloads/
-RUN "powershell.exe Start-Process -filepath "<filepath to jdk from resources folder>" -NoNewWindow -Wait -PassThru -ArgumentList '/s'"
+RUN "powershell.exe Start-Process -Filepath "<Filepath to jdk from resources folder>" -NoNewWindow -Wait -PassThru -ArgumentList '/s'; \
+Remove-Item 'Filepath to jdk in working directory';"
+
+# Setting JAVA_HOME
 ENV JAVA_HOME='C:\Program Files\Java\jdk'
 
 # Installing NCache setup.

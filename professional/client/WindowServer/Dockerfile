@@ -19,7 +19,8 @@ EXPOSE 8250-8260 9800 7800-7900 8300-8400
 
 # Installing the .NET 6.0 runtime.
 # .NET 6.0 can be downloaded from https://dotnet.microsoft.com/en-us/download/dotnet.
-RUN "powershell.exe Start-Process -Filepath "<Filepath to .NET 6.0 from resources folder>" -NoNewWindow -Wait -PassThru -ArgumentList '/s'"
+RUN "powershell.exe Start-Process -Filepath "<Filepath to .NET 6.0 from resources folder>" -NoNewWindow -Wait -PassThru -ArgumentList '/s'; \
+Remove-Item 'Filepath to .NET 6.0 in working directory';"
 
 # Installing NCache setup.
 # The parameter "KEY"(optional) is the install key and is sent to user through e-mail once they download NCache setup. In case if user does not get a key, contact us at http://www.alachisoft.com/company/contact-us.html.
