@@ -46,4 +46,4 @@ RUN msiexec /i ncache.ent.net.x64.msi INSTALLMODE="0" KEY="XXXXXXXXXX" USERFIRST
 RUN "powershell.exe Remove-Item C:/app/ncache.ent.net.x64.msi"
 
 # Entry point for the container, once all the required configurations have been made.
-ENTRYPOINT ["powershell.exe", "C:/app/StartUp.ps1" ]
+ENTRYPOINT ["powershell.exe", "C:/app/Startup.ps1" ]
