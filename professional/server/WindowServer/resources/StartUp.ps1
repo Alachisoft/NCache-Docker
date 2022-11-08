@@ -44,7 +44,6 @@ catch [Exception] {
 
 Write-Host "Started NCache SVC";
 
-
 Set-ExecutionPolicy RemoteSigned -Force
 
 while ($true) {

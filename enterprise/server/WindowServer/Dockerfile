@@ -1,5 +1,5 @@
 # Setting base image for NCache. Uses Windows Server Core.
-FROM mcr.microsoft.com/windows/servercore:ltsc2022
+FROM mcr.microsoft.com/windows/servercore:ltsc2019
 # Setting work directory to copy setups and resources for configuring NCache.
 WORKDIR /app
 
@@ -41,7 +41,7 @@ ENV JAVA_HOME='C:\Program Files\Java\jdk'
 # The parameter "EMAILADDRESS" represents the e-mail address of the user.
 # The parameter "INSTALLDIR" and "TARGETDIR" represents the installation directory where NCache will be installed.
 # The parameter "/qn" specifies that NCache will be installed silently without user interaction and will not prompt the user for anything.
-RUN msiexec /i ncache.ent.net.x64.msi INSTALLMODE="0" KEY="XXXXXXXXXX" USERFIRSTNAME="John" USERLASTNAME="Smith" COMPANYNAME="youcompany" EMAILADDRESS="john_smith@yourdomain.com" TARGETDIR="C:\Program Files\NCache" INSTALLDIR="C:\Program Files\NCache" STARTCACHE="false" /qn
+RUN msiexec /i ncache.ent.net.x64.msi INSTALLMODE="0" KEY="XXXXXXXXXX" USERFIRSTNAME="John" USERLASTNAME="Smith" COMPANYNAME="yourcompanyname" EMAILADDRESS="john_smith@yourdomain.com" TARGETDIR="C:\Program Files\NCache" INSTALLDIR="C:\Program Files\NCache" STARTCACHE="false" /qn
 
 RUN "powershell.exe Remove-Item C:/app/ncache.ent.net.x64.msi"
 
