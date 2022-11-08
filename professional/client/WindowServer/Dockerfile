@@ -1,5 +1,5 @@
 # Setting base image for NCache. Uses Windows Server Core.
-FROM mcr.microsoft.com/windows/servercore:ltsc2022
+FROM mcr.microsoft.com/windows/servercore:ltsc2019
 # Setting work directory to copy setups and resources for configuring NCache.
 WORKDIR /app
 
