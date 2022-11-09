@@ -23,6 +23,7 @@
 
 #### NCache Enterprise
 
+*   `enterprise-server-linux-latest`
 *   `enterprise-server-linux-5.3.1`
 *   `enterprise-server-linux-5.0.4`
 *   `enterprise-server-linux-5.0.2`
