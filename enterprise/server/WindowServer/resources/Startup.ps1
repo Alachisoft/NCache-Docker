@@ -48,7 +48,7 @@ Write-Host "Configurations are modified successfully.";
 Write-Host "Starting NCache SVC.";
 Start-Service -Name NCacheSvc;
 Write-Host "Started NCache SVC";
-
+Restart-service -Name NCacheSvc;
 Set-ExecutionPolicy RemoteSigned -Force
 
 
