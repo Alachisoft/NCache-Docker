@@ -44,9 +44,9 @@ Following commands can be used to pull images with different editions of NCache:
     `docker pull alachisoft/ncache:enterprise-server-5.3.1`
   
 *   For NCache Enterprise Server Edition on Linux Debian use  
-    	`docker pull alachisoft/ncache:enterprise-server-linux-5.3.1`
-    or
-     `docker pull alachisoft/ncache:enterprise-server-linux-latest`
+    	`docker pull alachisoft/ncache:enterprise-server-linux-latest`                                                                         
+    or                                                                                                                                                      
+     `docker pull alachisoft/ncache:enterprise-server-linux-5.3.1`
 
 
 
