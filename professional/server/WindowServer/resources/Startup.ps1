@@ -31,16 +31,9 @@ if(Test-Path $path)
 
 Write-Host "Configurations are modified successfully.";
 
-
 Write-Host "Starting NCache SVC.";
 
-try
-{
-	Start-Service NCacheSvc;
-}
-catch [Exception] {
-	Start-Process -filepath "C:\Program Files\NCache\bin\service\Alachisoft.NCache.Service.exe" -NoNewWindow -wait -PassThru -ArgumentList '/s';
-}
+Start-Process -filepath "C:\Program Files\NCache\bin\service\Alachisoft.NCache.Service.exe" -NoNewWindow -wait -PassThru -ArgumentList '/s';
 
 Write-Host "Started NCache SVC";
 
