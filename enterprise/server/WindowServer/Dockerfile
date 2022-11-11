@@ -5,7 +5,7 @@ WORKDIR /app
 
 # Make sure that a folder ("resources") exist in the same directory as the Dockerfile.
 # Make sure that "StartUp.ps1" script resides in the "resources" folder.
-# Make sure that ".NET 6.0" resides in the "resources" folder.
+# Make sure that ".NET 6.0" installer resides in the "resources" folder. It can be downloaded from https://dotnet.microsoft.com/en-us/download/dotnet.
 # Make sure that "jdk" installer resides in the "resources" folder if you want to use NCache java server side feature.
 # Make sure that NCache setup resides in the "resources" folder. It can be downloaded from https://www.alachisoft.com/download-ncache.html.
 # Copying resources into the work directory of the container.
