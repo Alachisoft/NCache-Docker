@@ -33,10 +33,10 @@ $path = Join-Path -Path (Join-Path -Path $installDir -ChildPath $config) -Childp
 	{
 		(Get-Content $pathToLoader) | Foreach-Object {$_ -replace , $oldIP, $newIP}  | Out-File $pathToLoader
 	}
+
 	$pathToBridge = Join-Path -Path (Join-Path -Path $installDir -ChildPath $service) -Childpath "Alachisoft.NCache.BridgeService.dll.config";
 	$bridge_xml = [xml](Get-Content $pathToBridge)
-	$oldBridgeIP = ($bridge_xml.configuration.appSettings.add | Where-Object {$_.key -eq "NCacheServer.BindToIP"} | Select value) | Select -ExpandProperty "value"
-	
+	$oldBridgeIP = ($bridge_xml.configuration.appSettings.add | Where-Object {$_.key -eq "NCacheServer.BindToIP"} | Select value) | Select -ExpandProperty "value"	
 	if(Test-Path $pathToBridge)
 	{
 		(Get-Content $pathToBridge) | Foreach-Object {$_ -replace , $oldIP, $newIP}  | Out-File $pathToBridge
@@ -54,7 +54,7 @@ $path = Join-Path -Path (Join-Path -Path $installDir -ChildPath $config) -Childp
 	if ($updatedValue -eq $newRegistryValueData) {
 		Write-Host "Registry value '$registryValueName' has been successfully updated to '$newRegistryValueData'."
 	} else {
-		Write-Host "Failed to update the registry value."
+		Write-Error "Failed to update the registry value."
 	}
 
 Write-Host "Configurations are modified successfully.";

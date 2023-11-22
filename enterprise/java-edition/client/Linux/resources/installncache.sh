@@ -41,12 +41,11 @@ while [ "$1" != "" ]; do
 			VERBOSE="true"
 			;;
 
-	-h | --help )
-		
+	-h | --help )		
 			exit
 			;;
-	* )
-	
+
+	* )	
 			exit 1
     esac
     shift
@@ -83,7 +82,6 @@ rm -rf ncache-enterprise/
 #--- Updating permissions and ownership
 chmod -R 775 /home/ncache /opt/ncache/bin/tools/web /opt/ncache/bin/service /opt/ncache/libexec 
 chown -R ncache:root /app
-chown -R ncache:ncache /opt/ncache
 
 #--- Adding the user to the root group
 usermod -a -G root ncache
