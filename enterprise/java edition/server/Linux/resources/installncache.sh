@@ -62,22 +62,29 @@ then
 	PASSWORD="ncache"
 fi
 
+setup_file="ncache.ent.java.tar.gz"
+
+if [ ! -e "$setup_file"  ]; then
+    echo "Error: $setup_file does not exist."
+	exit 1
+fi
+
 #--- Untaring and installing NCache
-tar -zxf ncache.ent.net.tar.gz
+tar -zxf $setup_file
 cd ncache-enterprise
 
 ./install --firstname $FIRST_NAME --lastname $LAST_NAME --email $EMAIL --company $COMPANY --installmode $INSTALLMODE --installkey $KEY
 
 cd ..
 #--- Removing installation resources
-rm -f ncache.ent.net.tar.gz
+rm -f $setup_file
 rm -rf ncache-enterprise/
 
-mkdir /home/ncache
 
 #--- Updating permissions and ownership
 chmod -R 775 /home/ncache /opt/ncache/bin/tools/web /opt/ncache/bin/service /opt/ncache/libexec 
-chown -R ncache:root /app /opt/ncache /home/ncache
+chown -R ncache:root /app
+chown -R ncache:ncache /opt/ncache
 
 #--- Adding the user to the root group
 usermod -a -G root ncache

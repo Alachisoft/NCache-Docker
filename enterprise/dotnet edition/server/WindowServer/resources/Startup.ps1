@@ -42,6 +42,21 @@ $path = Join-Path -Path (Join-Path -Path $installDir -ChildPath $config) -Childp
 		(Get-Content $pathToBridge) | Foreach-Object {$_ -replace , $oldIP, $newIP}  | Out-File $pathToBridge
 	}
 
+	# Define the registry key path and value to set
+	$registryPath = "HKLM:\SOFTWARE\Alachisoft\NCache"
+	$registryValueName = "InstallType" 
+	$newRegistryValueData = "dci" 
+
+	# Set the registry value
+	Set-ItemProperty -Path $registryPath -Name $registryValueName -Value $newRegistryValueData
+	# Optionally, verify that the value has been set
+	$updatedValue = (Get-ItemProperty -Path $registryPath).$registryValueName
+	if ($updatedValue -eq $newRegistryValueData) {
+		Write-Host "Registry value '$registryValueName' has been successfully updated to '$newRegistryValueData'."
+	} else {
+		Write-Host "Failed to update the registry value."
+	}
+
 Write-Host "Configurations are modified successfully.";
 
 
