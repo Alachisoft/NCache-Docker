@@ -32,7 +32,7 @@ RUN curl -SL --output dotnet-sdk-win-x64.exe https://dotnetcli.azureedge.net/dot
 # The parameter "EMAILADDRESS" represents the e-mail address of the user.
 # The parameter "INSTALLDIR" and "TARGETDIR" represents the installation directory where NCache will be installed.
 # The parameter "/qn" specifies that NCache will be installed silently without user interaction and will not prompt the user for anything.
-RUN msiexec /i ncache.ent.net.x64.msi INSTALLMODE="3" USERFIRSTNAME="John" USERLASTNAME="Smith" COMPANYNAME="youcompany" EMAILADDRESS="john_smith@yourdomain.com" TARGETDIR="C:\Program Files\NCache" INSTALLDIR="C:\Program Files\NCache" STARTCACHE="false" /qn \
+RUN msiexec /i ncache.ent.net.x64.msi USERFIRSTNAME="John" USERLASTNAME="Smith" COMPANYNAME="youcompany" EMAILADDRESS="john_smith@yourdomain.com" TARGETDIR="C:\Program Files\NCache" INSTALLDIR="C:\Program Files\NCache" STARTCACHE="false" INSTALLMODE="3" /qn \
  &&  del ncache.ent.net.x64.msi
 
 # Entry point for the container, once all the required configurations have been made.
