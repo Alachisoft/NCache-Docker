@@ -76,14 +76,14 @@ fi
 #--- Untaring and installing NCache
 tar -zxf $setup_file
 cd ncache-enterprise
-cd ncache-enterprise
 
-./install --firstname $FIRST_NAME --lastname $LAST_NAME --email $EMAIL --company $COMPANY --installmode $INSTALLMODE
+./install --firstname $FIRST_NAME --lastname $LAST_NAME --email $EMAIL --company $COMPANY --installkey $KEY --installplayground $PLAYGROUND
 
 cd ..
 #--- Removing installation resources
 rm -f $setup_file
 rm -rf ncache-enterprise/
+
 
 #--- Updating permissions and ownership
 chmod -R 775 /home/ncache /opt/ncache/bin/tools/web /opt/ncache/bin/service /opt/ncache/libexec 

@@ -37,6 +37,10 @@ while [ "$1" != "" ]; do
 			EMAIL=$1
 			;;
 			
+	-g | --installplayground )	shift
+			PLAYGROUND=$1
+			;;
+			
 	-v | --verbose )
 			VERBOSE="true"
 			;;
@@ -62,7 +66,7 @@ then
 	PASSWORD="ncache"
 fi
 
-setup_file="ncache.ent.java.tar.gz"
+setup_file="ncache.ent.net.tar.gz"
 
 if [ ! -e "$setup_file"  ]; then
     echo "Error: $setup_file does not exist."
@@ -73,18 +77,16 @@ fi
 tar -zxf $setup_file
 cd ncache-enterprise
 
-./install --firstname $FIRST_NAME --lastname $LAST_NAME --email $EMAIL --company $COMPANY --installmode $INSTALLMODE --installkey $KEY
+./install --firstname $FIRST_NAME --lastname $LAST_NAME --email $EMAIL --company $COMPANY --installmode $INSTALLMODE
 
 cd ..
 #--- Removing installation resources
 rm -f $setup_file
 rm -rf ncache-enterprise/
 
-
 #--- Updating permissions and ownership
 chmod -R 775 /home/ncache /opt/ncache/bin/tools/web /opt/ncache/bin/service /opt/ncache/libexec 
 chown -R ncache:root /app
-chown -R ncache:ncache /opt/ncache
 
 #--- Adding the user to the root group
 usermod -a -G root ncache

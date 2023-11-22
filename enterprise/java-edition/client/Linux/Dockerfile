@@ -22,11 +22,7 @@ EXPOSE 8250-8260 9800 8300-8400
 # The parameter "--company" Provide your company name.
 # The parameter "--email" Provide your email address.
 RUN  chmod -R 775 /app  \
- && apt-get update && apt-get install -y \
- procps \
- ed \
- apt-transport-https \
- openjdk-17-jre-headless \
+ && apt-get update && apt-get install -y procps ed apt-transport-https openjdk-17-jre-headless \
  && ./installncache.sh --firstname "YOUR_FIRST_NAME" --lastname "YOUR_LAST_NAME" --company "YOUR_COMPANY" --email "YOUR_EMAIL" --installmode "client"
 
 # Switching the current user to ncache user
