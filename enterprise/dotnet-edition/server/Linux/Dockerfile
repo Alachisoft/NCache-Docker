@@ -22,10 +22,11 @@ EXPOSE 8250-8260 9800 7800-7900 8300-8400 9900 10000-10100
 # The parameter "--company" Provide your company name.
 # The parameter "--email" Provide your email address.
 # The parameter "--installkey" Installation key provided by alachisoft.com.
+# The parameter "--installplayground" specifies to install or not playground with NCache..
 RUN  chmod -R 775 /app  \
  && apt-get update \
  && apt-get install -y procps ed apt-transport-https \
- && ./installncache.sh --firstname "YOUR_FIRST_NAME" --lastname "YOUR_LAST_NAME" --company "YOUR_COMPANY" --email "YOUR_EMAIL" --installkey "******" --installmode "server"
+ && ./installncache.sh --firstname "YOUR_FIRST_NAME" --lastname "YOUR_LAST_NAME" --company "YOUR_COMPANY" --email "YOUR_EMAIL" --installkey "******" --installmode "server" --installplayground false
 
 # Switching the current user to ncache user
 USER ncache
