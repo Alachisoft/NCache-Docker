@@ -14,7 +14,7 @@ WORKDIR /app
 COPY resources .
 
 # Exposing ports used by NCache for communication.
-EXPOSE 8250-8260 9800 7800-7900 8300-8400 9900 10000-10100
+EXPOSE 8250-8260 9800 8300-8400
 
 # Installing NCache Linux setup (.tar.gz).
 # The parameter "--firstname" represents the first name of the user.

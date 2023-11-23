@@ -14,7 +14,7 @@ WORKDIR /app
 COPY resources .
 
 # Exposing ports used by NCache for communication.
-EXPOSE 8250-8260 9800 7800-7900 8300-8400 9900 10000-10100
+EXPOSE 8250-8260 9800 7800-7900 8300-8400
 
 # Installing NCache Linux setup (.tar.gz).
 # The parameter "--firstname" represents the first name of the user.
@@ -25,7 +25,7 @@ EXPOSE 8250-8260 9800 7800-7900 8300-8400 9900 10000-10100
 RUN  chmod -R 775 /app  \
  && apt-get update \
  && apt-get install -y procps ed apt-transport-https \
- && ./installncache.sh --firstname "YOUR_FIRST_NAME" --lastname "YOUR_LAST_NAME" --company "YOUR_COMPANY" --email "YOUR_EMAIL" --installkey "******" --installmode "server"
+ && ./installncache.sh --firstname "YOUR_FIRST_NAME" --lastname "YOUR_LAST_NAME" --company "YOUR_COMPANY" --email "YOUR_EMAIL" --installkey "******"
 
 # Switching the current user to ncache user
 USER ncache
