@@ -22,9 +22,9 @@ COPY resources .
 EXPOSE 8250-8260 9800 7800-7900 8300-8400 9900 10000-10100
 
 #downloading and installing the .NET 6.0.
-RUN curl -SL --output dotnet-sdk-win-x64.exe https://dotnetcli.azureedge.net/dotnet/Sdk/%DOTNET_VERSION%/dotnet-sdk-%DOTNET_VERSION%-win-x64.exe \
-    && dotnet-sdk-win-x64.exe /s \
-    && del dotnet-sdk-win-x64.exe
+RUN curl -SL --output dotnet.exe https://dotnetcli.azureedge.net/dotnet/Sdk/%DOTNET_VERSION%/dotnet-sdk-%DOTNET_VERSION%-win-x64.exe \
+    && dotnet.exe /s \
+    && del dotnet.exe
 
 # Installing NCache setup.
 # The parameter "KEY" is the install key and is sent to user through e-mail once they download NCache setup. In case if user does not get a key, contact us at http://www.alachisoft.com/company/contact-us.html.
