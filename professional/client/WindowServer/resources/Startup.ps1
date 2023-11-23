@@ -12,6 +12,7 @@ $oldIP = ($xml.configuration.appSettings.add | Where-Object {$_.key -eq "NCacheS
 $newIP = $ipaddress = $(ipconfig | where {$_ -match 'IPv4.+\s(\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3})' } | out-null; $Matches[1]);
 
 #::-----------------------------------------------------------------------
+Stop-Service -Name NCacheSvc;
 Write-Host "";
 Write-Output "CHANGING CONFIGURATIONS";
 $path = Join-Path -Path (Join-Path -Path $installDir -ChildPath $config) -Childpath "client.ncconf";
@@ -25,11 +26,24 @@ $path = Join-Path -Path (Join-Path -Path $installDir -ChildPath $service) -Child
 
 Write-Host "Configurations are modified successfully.";
 
-Write-Host "Starting NCache SVC.";
-Start-Process -filepath "C:\Program Files\NCache\bin\service\Alachisoft.NCache.Service.exe" -NoNewWindow -wait -PassThru -ArgumentList '/s';
-Write-Host "Started NCache SVC";
+# Define the registry key path and value to set
+$registryPath = "HKLM:\SOFTWARE\Alachisoft\NCache"
+$registryValueName = "InstallType" 
+$newRegistryValueData = "dci" 
 
-Set-ExecutionPolicy RemoteSigned -Force
+# Set the registry value
+Set-ItemProperty -Path $registryPath -Name $registryValueName -Value $newRegistryValueData
+# Optionally, verify that the value has been set
+$updatedValue = (Get-ItemProperty -Path $registryPath).$registryValueName
+if ($updatedValue -eq $newRegistryValueData) {
+	Write-Host "Registry value '$registryValueName' has been successfully updated to '$newRegistryValueData'."
+} else {
+	Write-Error "Failed to update the registry value."
+}	
+
+Write-Host "Starting NCache SVC.";
+Start-Service -Name NCacheSvc;
+Write-Host "Started NCache SVC";
 
 while ($true) {
 	Start-Sleep -Seconds 500

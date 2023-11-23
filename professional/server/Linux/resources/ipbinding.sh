@@ -1,6 +1,6 @@
 #!/bin/sh
 
-ip="$(hostname -i)"
+ip="$(hostname -I | cut -d ' ' -f 1)"
 DESTINATION=/opt
 
 cd $DESTINATION/ncache/bin/service
