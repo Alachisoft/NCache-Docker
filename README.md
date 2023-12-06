@@ -71,16 +71,16 @@ In order to create custom Docker images, Dockerfiles can be found at the follwin
 ### Enterprise .NET Edition
 
 *   [NCache Enterprise Server For Linux](https://github.com/Alachisoft/NCache-Docker/blob/master/enterprise/dotnet-edition/server/Linux/Dockerfile)
-*   [NCache Enterprise Client For Linux](https://github.com/Alachisoft/NCache-Docker/blob/master/enterprise/dotnet-edition/client/WindowServer/Dockerfile)
-*   [NCache Enterprise Server For Windows Server Core](https://github.com/Alachisoft/NCache-Docker/blob/master/enterprise/dotnet-edition/server/Linux/Dockerfile)
-*   [NCache Enterprise Client For Windows Server Core](https://github.com/Alachisoft/NCache-Docker/blob/master/enterprise/dotnet-edition/server/WindowServer/Dockerfile)
+*   [NCache Enterprise Client For Linux](https://github.com/Alachisoft/NCache-Docker/blob/master/enterprise/dotnet-edition/client/Linux/Dockerfile)
+*   [NCache Enterprise Server For Windows Server Core](https://github.com/Alachisoft/NCache-Docker/blob/master/enterprise/dotnet-edition/server/WindowServer/Dockerfile)
+*   [NCache Enterprise Client For Windows Server Core](https://github.com/Alachisoft/NCache-Docker/blob/master/enterprise/dotnet-edition/client/WindowServer/Dockerfile)
 
 ### Enterprise Java Edition
 
 *   [NCache Enterprise Server For Linux](https://github.com/Alachisoft/NCache-Docker/blob/master/enterprise/java-edition/server/Linux/Dockerfile)
-*   [NCache Enterprise Client For Linux](https://github.com/Alachisoft/NCache-Docker/blob/master/enterprise/java-edition/client/WindowServer/Dockerfile)
-*   [NCache Enterprise Server For Windows Server Core](https://github.com/Alachisoft/NCache-Docker/blob/master/enterprise/java-edition/server/Linux/Dockerfile)
-*   [NCache Enterprise Client For Windows Server Core](https://github.com/Alachisoft/NCache-Docker/blob/master/enterprise/java-edition/server/WindowServer/Dockerfile)
+*   [NCache Enterprise Client For Linux](https://github.com/Alachisoft/NCache-Docker/blob/master/enterprise/java-edition/client/Linux/Dockerfile)
+*   [NCache Enterprise Server For Windows Server Core](https://github.com/Alachisoft/NCache-Docker/blob/master/enterprise/java-edition/server/WindowServer/Dockerfile)
+*   [NCache Enterprise Client For Windows Server Core](https://github.com/Alachisoft/NCache-Docker/blob/master/enterprise/java-edition/client/WindowServer/Dockerfile)
 
 ### Professional
 
