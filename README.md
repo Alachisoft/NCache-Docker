@@ -2,12 +2,12 @@
 
 #### NCache Enterprise
 *   `latest`
-*   `5.3.4`
+*   `5.3.5`
 
 #### NCache Professional
 
 *   `latest-professional`
-*   `5.3.2-professional`
+*   `5.3.5-professional`
 
 #### NCache Open Source
 
@@ -24,7 +24,7 @@ Following commands can be used to pull images with different editions of NCache:
      `docker pull alachisoft/ncache:latest`
 
 *   For a specific version of NCache Enterprise use version tag like this  
-     `docker pull alachisoft/ncache:5.3.4`
+     `docker pull alachisoft/ncache:5.3.5`
  
 ### Professional
 
@@ -32,7 +32,7 @@ Following commands can be used to pull images with different editions of NCache:
      `docker pull alachisoft/ncache:latest-professional`
 
 *   For a specific version of NCache Professional use version tag like this  
-     `docker pull alachisoft/ncache:5.3.3-professional`
+     `docker pull alachisoft/ncache:5.3.5-professional`
 
 ### Open Source
 
@@ -44,13 +44,13 @@ Following commands can be used to pull images with different editions of NCache:
 
 ### Enterprise
 
-*   [NCache Enterprise Server](https://github.com/Alachisoft/NCache-Docker/blob/master/enterprise/dotnet-edition/server/Linux/Dockerfile)
-*   [NCache Enterprise Client](https://github.com/Alachisoft/NCache-Docker/blob/master/enterprise/dotnet-edition/client/Linux/Dockerfile)
+*   [NCache Enterprise Server](https://github.com/Alachisoft/NCache-Docker/blob/master/enterprise/server/Dockerfile)
+*   [NCache Enterprise Client](https://github.com/Alachisoft/NCache-Docker/blob/master/enterprise/client/Dockerfile)
 
 ### Professional
 
-*   [NCache Professional Server](https://github.com/Alachisoft/NCache-Docker/blob/master/professional/server/Linux/Dockerfile)
-*   [NCache Professional Client](https://github.com/Alachisoft/NCache-Docker/blob/master/professional/client/Linux/Dockerfile)
+*   [NCache Professional Server](https://github.com/Alachisoft/NCache-Docker/blob/master/professional/server/Dockerfile)
+*   [NCache Professional Client](https://github.com/Alachisoft/NCache-Docker/blob/master/professional/client/Dockerfile)
 
 ### Open Source
 
