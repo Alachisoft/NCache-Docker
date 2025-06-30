@@ -15,7 +15,6 @@ COPY resources .
 # Exposing ports used by NCache for communication.
 EXPOSE 8250-8260 9800 8300-8400
 
-
 # Installing prerequisite ...
 RUN apt-get update && apt-get install -y \
  procps \

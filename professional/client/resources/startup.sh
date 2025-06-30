@@ -7,9 +7,4 @@ fi
 
 /usr/share/dotnet/dotnet /opt/ncache/bin/service/Alachisoft.NCache.Daemon.dll /opt/ncache
 
-if [ -e /app/activate.sh ]
-then
-    /app/activate.sh
-fi
-
 sleep infinity

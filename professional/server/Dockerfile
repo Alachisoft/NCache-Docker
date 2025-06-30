@@ -16,7 +16,6 @@ COPY resources .
 # Exposing ports used by NCache for communication.
 EXPOSE 8250-8260 9800 7800-7900 8300-8400
 
-
 # Installing prerequisite ...
 RUN apt-get update && apt-get install -y \
  procps \
@@ -25,7 +24,6 @@ RUN apt-get update && apt-get install -y \
  curl \
  libicu-dev \
  && rm -rf /var/lib/apt/lists/*
-
 
 # Installing NCache Linux setup (.tar.gz).
 # The parameter "--firstname" represents the first name of the user.
