@@ -70,18 +70,18 @@ fi
 
 #--- Untaring and installing NCache
 tar -zxf $setup_file
-cd ncache-professional
+cd ncache-community
 
 ./install --firstname $FIRST_NAME --lastname $LAST_NAME --email $EMAIL --company $COMPANY --installkey $KEY --installmode $INSTALLMODE
 
 cd ..
 #--- Removing installation resources
 rm -f $setup_file
-rm -rf ncache-professional/
+rm -rf ncache-community/
 
 mkdir /home/ncache
 #--- Updating permissions and ownership
-chmod -R 775 /home/ncache /opt/ncache/bin/tools/web /opt/ncache/bin/service /opt/ncache/lib /opt/ncache/libexec 
+chmod -R 775 /home/ncache /opt/ncache/bin/service /opt/ncache/lib /opt/ncache/libexec 
 chown -R ncache:root /app
 chown -R ncache:ncache /home/ncache
 

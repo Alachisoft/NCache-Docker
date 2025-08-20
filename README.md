@@ -2,12 +2,12 @@
 
 #### NCache Enterprise
 *   `latest`
-*   `5.3.5`
+*   `5.3.6`
 
-#### NCache Professional
+#### NCache Community
 
-*   `latest-professional`
-*   `5.3.5-professional`
+*   `latest-community`
+*   `5.3.6-community`
 
 
 ## Docker Commands for NCache
@@ -20,15 +20,15 @@ Following commands can be used to pull images with different editions of NCache:
      `docker pull alachisoft/ncache:latest`
 
 *   For a specific version of NCache Enterprise use version tag like this  
-     `docker pull alachisoft/ncache:5.3.5`
+     `docker pull alachisoft/ncache:5.3.6`
  
-### Professional
+### Community
 
-*   For the latest version of NCache Professional Server Edition always use  
-     `docker pull alachisoft/ncache:latest-professional`
+*   For the latest version of NCache Community Server Edition always use  
+     `docker pull alachisoft/ncache:latest-community`
 
-*   For a specific version of NCache Professional use version tag like this  
-     `docker pull alachisoft/ncache:5.3.5-professional`
+*   For a specific version of NCache Community use version tag like this  
+     `docker pull alachisoft/ncache:5.3.6-community`
 
 
 ## Dockerfile Links
@@ -38,10 +38,10 @@ Following commands can be used to pull images with different editions of NCache:
 *   [NCache Enterprise Server](https://github.com/Alachisoft/NCache-Docker/blob/master/enterprise/server/Dockerfile)
 *   [NCache Enterprise Client](https://github.com/Alachisoft/NCache-Docker/blob/master/enterprise/client/Dockerfile)
 
-### Professional
+### Community
 
-*   [NCache Professional Server](https://github.com/Alachisoft/NCache-Docker/blob/master/professional/server/Dockerfile)
-*   [NCache Professional Client](https://github.com/Alachisoft/NCache-Docker/blob/master/professional/client/Dockerfile)
+*   [NCache Community Server](https://github.com/Alachisoft/NCache-Docker/blob/master/community/server/Dockerfile)
+*   [NCache Community Client](https://github.com/Alachisoft/NCache-Docker/blob/master/community/client/Dockerfile)
 
 
 ## What is NCache?

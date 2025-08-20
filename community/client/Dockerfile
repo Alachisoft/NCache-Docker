@@ -1,5 +1,5 @@
 # Setting base image for NCache.
-FROM mcr.microsoft.com/dotnet/sdk:6.0-jammy
+FROM mcr.microsoft.com/dotnet/runtime:8.0
 
 # Setting work directory to copy setups and resources for configuring NCache.
 WORKDIR /app
