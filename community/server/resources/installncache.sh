@@ -61,7 +61,7 @@ then
 	PASSWORD="ncache"
 fi
 
-setup_file="ncache.pro.net.tar.gz"
+setup_file="ncache.com.net.tar.gz"
 
 if [ ! -e "$setup_file"  ]; then
     echo "Error: $setup_file does not exist."
@@ -70,14 +70,14 @@ fi
 
 #--- Untaring and installing NCache
 tar -zxf $setup_file
-cd ncache-professional
+cd ncache-community
 
 ./install --firstname $FIRST_NAME --lastname $LAST_NAME --email $EMAIL --company $COMPANY --installkey $KEY --installmode $INSTALLMODE
 
 cd ..
 #--- Removing installation resources
 rm -f $setup_file
-rm -rf ncache-professional/
+rm -rf ncache-community/
 
 mkdir /home/ncache
 #--- Updating permissions and ownership
