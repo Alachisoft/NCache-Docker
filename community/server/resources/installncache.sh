@@ -61,7 +61,7 @@ then
 	PASSWORD="ncache"
 fi
 
-setup_file="ncache.pro.net.tar.gz"
+setup_file="ncache.com.net.tar.gz"
 
 if [ ! -e "$setup_file"  ]; then
     echo "Error: $setup_file does not exist."
