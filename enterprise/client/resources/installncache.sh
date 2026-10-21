@@ -1,52 +1,32 @@
 #!/bin/sh
 while [ "$1" != "" ]; do
     case $1 in
-	-d | --dotnethome )	shift
-			DOTNETHOME=$1
-			;;
-				
-	-i | --ipaddress )	shift
+	-i | --bind_to_ip )	shift
 			IP=$1
 			;;
 
-	-p | --installpath )	shift
+	-p | --install_dir )	shift
 			DESTINATION=$1
-			;;	
-
-	-f | --firstname )	shift
-			FIRST_NAME=$1
+			;;
+		
+	-k | --key )	shift
+			INSTALL_KEY=$1
 			;;
 
-	-l | --lastname )	shift
-			LAST_NAME=$1
+	-m | --install_mode )	shift
+			INSTALL_MODE=$1
 			;;
 
-	-c | --company )	shift
-			COMPANY=$1
-			;;
-			
-	-k | --installkey )	shift
-			KEY=$1
-			;;
-	
-	-m | --installmode )	shift
-			INSTALLMODE=$1
-			;;
-
-	-e | --email )	shift
-			EMAIL=$1
-			;;
-			
 	-v | --verbose )
 			VERBOSE="true"
 			;;
 
 	-h | --help )
-		
+			usage
 			exit
 			;;
 	* )
-	
+			usage
 			exit 1
     esac
     shift
@@ -57,32 +37,32 @@ then
 	DESTINATION="/opt"
 fi
 
+if [ -z $INSTALL_MODE ]
+then
+	INSTALL_MODE="client"
+fi
+
 if [ -z $PASSWORD ]
 then
 	PASSWORD="ncache"
 fi
 
-setup_file="ncache.ent.net.tar.gz"
-
-if [ ! -e "$setup_file"  ]; then
-    echo "Error: $setup_file does not exist."
-	exit 1
-fi
-
 #--- Untaring and installing NCache
-tar -zxf $setup_file
-cd ncache-enterprise-dotnet
+tar -zxf ncache-enterprise.tar.gz
+cd ncache-enterprise
 
-./install --firstname $FIRST_NAME --lastname $LAST_NAME --email $EMAIL --company $COMPANY --installkey $KEY --installmode $INSTALLMODE
+./install --key $INSTALL_KEY -m $INSTALL_MODE -P $PASSWORD -t true
 
 cd ..
 #--- Removing installation resources
-rm -f $setup_file
-rm -rf ncache-enterprise-dotnet/
+rm -f ncache-enterprise.tar.gz
+rm -rf ncache-enterprise/
+
 
 #--- Updating permissions and ownership
-chmod -R 775 /home/ncache /opt/ncache/bin/tools/web /opt/ncache/bin/service /opt/ncache/libexec /opt/ncache/lib
+chmod -R 775 /opt/ncache/bin/management /opt/ncache/bin/service /opt/ncache/lib
 chown -R ncache:root /app
+chown -R ncache:ncache /opt/ncache
 
 #--- Adding the user to the root group
 usermod -a -G root ncache
