@@ -1,71 +1,47 @@
 # NCache: Highly Scalable Distributed Cache for .NET
 
-#### NCache Enterprise
-*   `latest`
-*   `5.3.6`
+Official Dockerfiles for [NCache](https://www.alachisoft.com/ncache/).
 
-#### NCache Community
+NCache is an extremely fast and scalable distributed cache for .NET and Java applications. Use
+NCache for database caching, ASP.NET Session State storage, ASP.NET View State caching, and much
+more. NCache is used by hundreds of companies all over the world in mission critical applications.
 
-*   `latest-community`
-*   `5.3.6-community`
+## Editions
 
+| Edition | Folder | Docker Hub tags | Documentation |
+|---|---|---|---|
+| NCache Enterprise | [`ncache/`](ncache) | `latest`, `5.3.800` | [Enterprise README](ncache/README.md) |
+| NCache Open Source | [`ncache-oss/`](ncache-oss) | `latest-oss`, `5.3.603-OSS` | [Open Source README](ncache-oss/README.md) |
 
-## Docker Commands for NCache
+```bash
+docker pull alachisoft/ncache:latest        # NCache Enterprise
+docker pull alachisoft/ncache:latest-oss    # NCache Open Source
+```
 
-Following commands can be used to pull images with different editions of NCache:
+## Repository layout
 
-### Enterprise
+```text
+ncache/
+    server/      NCache Enterprise server image
+    client/      NCache Enterprise client image
+ncache-oss/
+    server/      NCache Open Source server image
+```
 
-*   For the latest version of NCache Enterprise Server .NET Edition always use  
-     `docker pull alachisoft/ncache:latest`
+Each image folder contains a `Dockerfile` and a `resources/` folder with the scripts the image
+runs. See the edition's README for building, running and configuring the image.
 
-*   For a specific version of NCache Enterprise use version tag like this  
-     `docker pull alachisoft/ncache:5.3.6`
- 
-### Community
+## Documentation
 
-*   For the latest version of NCache Community Server Edition always use  
-     `docker pull alachisoft/ncache:latest-community`
-
-*   For a specific version of NCache Community use version tag like this  
-     `docker pull alachisoft/ncache:5.3.6-community`
-
-
-## Dockerfile Links
-
-### Enterprise
-
-*   [NCache Enterprise Server](https://github.com/Alachisoft/NCache-Docker/blob/master/enterprise/server/Dockerfile)
-*   [NCache Enterprise Client](https://github.com/Alachisoft/NCache-Docker/blob/master/enterprise/client/Dockerfile)
-
-### Community
-
-*   [NCache Community Server](https://github.com/Alachisoft/NCache-Docker/blob/master/community/server/Dockerfile)
-*   [NCache Community Client](https://github.com/Alachisoft/NCache-Docker/blob/master/community/client/Dockerfile)
-
-
-## What is NCache?
-
-NCache is an extremely fast and scalable Open Source distributed cache for .NET & Java applications. Use NCache for database caching, ASP.NET Session State storage, ASP.NET View State Caching, and much more.
-
-NCache is used by hundreds of companies all over the world in mission critical applications. See more details about NCache at [www.alachisoft.com](https://www.alachisoft.com). NCache documentation can be found at [www.alachisoft.com/resources/docs/](https://www.alachisoft.com/resources/docs/).
-
-This repository contains official docker files for NCache.
+NCache documentation: [www.alachisoft.com/resources/docs](https://www.alachisoft.com/resources/docs/).
 
 ## Issues
 
-If you have any problems with or questions about this image, please contact us through a [GitHub issue](https://github.com/Alachisoft/NCache-Docker/issues).
+If you have any problems with or questions about these images, please open a
+[GitHub issue](https://github.com/Alachisoft/NCache-Docker/issues).
 
-## Licenses
+## Related repositories
 
-*   NCache Enterprise is available free for 30 days with all features and no performance or other limitations. When the NCache image is launched for the first time, you are required to register NCache with free evaluation key using PowerShell command 'Register-NCacheEvaluation'. You can contact sales@alachisoft to get a free evaluation key. Upon purchase you will receive an annual subscription license key. Entering the annual subscription license key converts the product from evaluation mode to a purchased copy without any re-installation. And, the product works for one or more years (based on how many years subscription you have purchased). And, at the end of this subscription period you must renew the subscription or NCache stops working. However, you’re given ample alerts at renewal time.
-
-*   NCache docker images for Linux are based on [Ubuntu 22.04](https://hub.docker.com/_/ubuntu) base image. The Ubuntu licensing is same as mentioned on [Ubuntu base image](https://hub.docker.com/_/ubuntu).
-
-
-## Related Repositories
-
-*   [alachisoft/ncache](https://hub.docker.com/r/alachisoft/ncache/) for NCache Docker Images
-*   [microsoft/dotnet](https://hub.docker.com/r/microsoft/dotnet/) for .NET Core Images
-*   [ubuntu](https://hub.docker.com/_/ubuntu) for Ubuntu base Images
-  
+*   [alachisoft/ncache](https://hub.docker.com/r/alachisoft/ncache/): NCache Docker images
+*   [microsoft/dotnet](https://hub.docker.com/r/microsoft/dotnet/): .NET images
+*   [ubuntu](https://hub.docker.com/_/ubuntu): Ubuntu base images
