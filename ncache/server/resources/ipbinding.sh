@@ -2,7 +2,7 @@
 #
 # ipbinding.sh - binds NCache to this container's IP address.
 #
-# Run once by startup.sh when the container starts, before the NCache services start. It writes
+# Run once by startup.sh when the container starts, before the NCache service starts. It writes
 # the container's address into the service and cache configuration, records the installation
 # type, and then deletes itself so later restarts keep its changes.
 #
@@ -24,7 +24,6 @@ set_bind_address() {
 # --- Service configuration ----------------------------------------------------------------
 set_bind_address Alachisoft.NCache.Daemon.dll.config          NCacheServer.BindToClusterIP
 set_bind_address Alachisoft.NCache.Daemon.dll.config          NCacheServer.BindToClientServerIP
-set_bind_address Alachisoft.NCache.BridgeDaemon.dll.config    NBridgeServer.BindToIP
 set_bind_address Alachisoft.NCache.ExecutionDaemon.dll.config LoaderIP
 
 # --- Cache configuration ------------------------------------------------------------------
@@ -36,14 +35,12 @@ sed -i "s/[0-9]\+\.[0-9]\+\.[0-9]\+\.[0-9]\+/$ip/g" "$NCACHE_HOME"/config/*.ncco
 # Each edit is a separate ed call: ed discards all of its edits when one substitution finds no
 # match, and the email may already be empty.
 
-# Clear any email address left in the image by the build.
-printf '%s\n' ',s|<email>[^<]*</email>|<email></email>|g' wq | ed -s "$NCINFO" 2>/dev/null
 
-# Record the installation type.
+# # Record the installation type.
 if [ -z "${NC_INSTALL_TYPE:-}" ]; then
-	printf '%s\n' ',s|<install-type>op<\/install-type>|<install-type>dci<\/install-type>|' wq | ed -s "$NCINFO"
-else
-	printf '%s\n' ",s|<install-type>op<\/install-type>|<install-type>${NC_INSTALL_TYPE}s<\/install-type>|" wq | ed -s "$NCINFO"
+	 printf '%s\n' ',s|<install-type>op<\/install-type>|<install-type>dc<\/install-type>|' wq | ed -s "$NCINFO"
+ else
+	 printf '%s\n' ",s|<install-type>op<\/install-type>|<install-type>${NC_INSTALL_TYPE}s<\/install-type>|" wq | ed -s "$NCINFO"
 fi
 
 # Run only once per container.

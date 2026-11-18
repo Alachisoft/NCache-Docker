@@ -7,8 +7,10 @@
 #   NC_MUTUAL_TLS                 true enables mutual TLS with the certificates below
 #   NC_TLS_CUSTOM_CERTIFICATE     server certificate PEM (private key, certificate, intermediates)
 #   NC_TLS_CUSTOM_PASSWORD        password of the encrypted private key in NC_TLS_CUSTOM_CERTIFICATE
+#   NC_TLS_CUSTOM_CA_CERTIFICATE  server CA certificate PEM imported into NCache's trust directory
 #   NC_TLS_CLIENT_CERTIFICATE     client certificate PEM
 #   NC_TLS_CLIENT_PASSWORD        password of the encrypted private key in NC_TLS_CLIENT_CERTIFICATE
+#   NC_TLS_CLIENT_CA_CERTIFICATE  client CA certificate PEM imported into NCache's trust directory
 #   NC_TLS_PROTOCOL_VERSION       tls12 (default), tls13 or auto
 #   NC_BIND_IP                    (ipbinding.sh) the address NCache binds to; TLS is enabled on the same address
 
@@ -59,13 +61,40 @@ wait_for_service() {
     done
 }
 
+trust_ca_certificate() {
+    local variable="$1" path="${!1}"
+    [ -n "$path" ] || return 0
+    [ -f "$path" ] || fail "$variable '$path' does not exist in the container"
+    TLS_CA_CERTIFICATE="$path" pwsh -NoProfile -NonInteractive -Command '
+        $ErrorActionPreference = "Stop"
+        try {
+            $certificates = [System.Security.Cryptography.X509Certificates.X509Certificate2Collection]::new()
+            $certificates.ImportFromPemFile($env:TLS_CA_CERTIFICATE)
+            if ($certificates.Count -eq 0) { throw "No PEM certificates were found." }
+            foreach ($certificate in $certificates) {
+                $constraints = $certificate.Extensions | Where-Object { $_.Oid.Value -eq "2.5.29.19" }
+                if (-not $constraints.CertificateAuthority) { throw "The file contains a certificate that is not a CA." }
+            }
+            $roots = "/opt/ncache/cert/root"
+            [System.IO.Directory]::CreateDirectory($roots) | Out-Null
+            foreach ($certificate in $certificates) {
+                [System.IO.File]::WriteAllText((Join-Path $roots ($certificate.Thumbprint + ".crt")), $certificate.ExportCertificatePem())
+            }
+        } catch {
+            Write-Error $_
+            exit 1
+        }
+    ' || fail "could not trust $variable '$path'"
+    log_info "Trusted $variable '$path' in /opt/ncache/cert/root"
+}
+
 enable_tls() {
     local node="$1" mutual="$2" output status
     output=$(cd /opt/ncache/lib && NO_COLOR=1 TLS_NODE="$node" TLS_MUTUAL="$mutual" pwsh -NoProfile -NonInteractive -Command '
         $ErrorActionPreference = "Stop"
         try {
             Import-Module /opt/ncache/lib/tools/ncacheps
-            $arguments = @{ Node = $env:TLS_NODE; NoLogo = $true }
+            $arguments = @{ Node = $env:TLS_NODE; NoLogo = $true; Force = $true }
             # The custom certificate applies to one-way and mutual TLS alike.
             if ($env:NC_TLS_CUSTOM_CERTIFICATE) { $arguments.CustomCertificatePath = $env:NC_TLS_CUSTOM_CERTIFICATE }
             if ($env:NC_TLS_CUSTOM_CERTIFICATE -and $env:NC_TLS_CUSTOM_PASSWORD) { $arguments.CustomCertificatePassword = $env:NC_TLS_CUSTOM_PASSWORD }
@@ -115,6 +144,9 @@ main() {
         fi
     fi
     log_info "TLS on $node (mutual: $mutual, custom certificate: ${NC_TLS_CUSTOM_CERTIFICATE:-none}, client certificate: ${NC_TLS_CLIENT_CERTIFICATE:-none}, protocol: ${NC_TLS_PROTOCOL_VERSION:-tls12})"
+
+    trust_ca_certificate NC_TLS_CUSTOM_CA_CERTIFICATE
+    trust_ca_certificate NC_TLS_CLIENT_CA_CERTIFICATE
 
     log_info "Waiting up to 300s for the NCache service on $node:9803"
     wait_for_service "$node" || fail "the NCache service did not start listening on port 9803"

@@ -35,15 +35,12 @@ sed -i "s/[0-9]\+\.[0-9]\+\.[0-9]\+\.[0-9]\+/$ip/g" "$NCACHE_HOME"/config/*.ncco
 # Each edit is a separate ed call: ed discards all of its edits when one substitution finds no
 # match, and the email may already be empty.
 
-# Clear any email address left in the image by the build.
-printf '%s\n' ',s|<email>[^<]*</email>|<email></email>|g' wq | ed -s "$NCINFO" 2>/dev/null
-
 # Record the installation type.
-if [ -z "${NC_INSTALL_TYPE:-}" ]; then
-	printf '%s\n' ',s|<install-type>op<\/install-type>|<install-type>dci<\/install-type>|' wq | ed -s "$NCINFO"
-else
+ if [ -z "${NC_INSTALL_TYPE:-}" ]; then
+	 printf '%s\n' ',s|<install-type>op<\/install-type>|<install-type>dc<\/install-type>|' wq | ed -s "$NCINFO"
+ else
 	printf '%s\n' ",s|<install-type>op<\/install-type>|<install-type>${NC_INSTALL_TYPE}s<\/install-type>|" wq | ed -s "$NCINFO"
-fi
+ fi
 
 # Run only once per container.
 rm -f /app/ipbinding.sh

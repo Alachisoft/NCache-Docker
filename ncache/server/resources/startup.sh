@@ -33,14 +33,14 @@ if [ -e /app/activate.sh ]; then
 	/app/activate.sh
 fi
 
-# --- Services -----------------------------------------------------------------------------
-/opt/ncache/bin/service/Alachisoft.NCache.ExecutionDaemon /opt/ncache &
-/opt/ncache/bin/service/Alachisoft.NCache.BridgeDaemon /opt/ncache &
-
-# Waits in the background until the NCache service is listening, then enables TLS.
-if [ -e /app/enable-tls.sh ]; then
-	bash /app/enable-tls.sh &
-fi
+# Ensuring that TLS is enabled first then the Bridge and Execution services are started
+(
+	if [ -e /app/enable-tls.sh ]; then
+		bash /app/enable-tls.sh
+	fi
+	/opt/ncache/bin/service/Alachisoft.NCache.BridgeDaemon /opt/ncache &
+	/opt/ncache/bin/service/Alachisoft.NCache.ExecutionDaemon /opt/ncache &
+) &
 
 # The NCache service replaces this script as the container's main process (PID 1), so it
 # receives the stop signal from docker stop.
