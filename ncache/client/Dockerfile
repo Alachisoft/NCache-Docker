@@ -62,10 +62,10 @@ LABEL org.label-schema.name="NCache Enterprise Client" \
 #   NC_MUTUAL_TLS               true also requires client certificates (mutual TLS)
 #   NC_TLS_CUSTOM_CERTIFICATE   server certificate PEM inside the container (private key, leaf, intermediates)
 #   NC_TLS_CUSTOM_PASSWORD      password of the encrypted private key in NC_TLS_CUSTOM_CERTIFICATE
-#   NC_TLS_CUSTOM_CA_CERTIFICATE server CA PEM imported into /opt/ncache/cert/root
+#   NC_TLS_CUSTOM_CA_CERTIFICATE server CA .crt file path inside the container
 #   NC_TLS_CLIENT_CERTIFICATE   client certificate PEM used with mutual TLS
 #   NC_TLS_CLIENT_PASSWORD      password of the encrypted private key in NC_TLS_CLIENT_CERTIFICATE
-#   NC_TLS_CLIENT_CA_CERTIFICATE client CA PEM imported into /opt/ncache/cert/root
+#   NC_TLS_CLIENT_CA_CERTIFICATE client CA .crt file path inside the container (mutual TLS)
 #   NC_TLS_PROTOCOL_VERSION     tls12 (default when empty), tls13 or auto
 ENV NC_ENABLE_TLS="false" \
     NC_MUTUAL_TLS="false" \

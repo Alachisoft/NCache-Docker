@@ -7,10 +7,10 @@
 #   NC_MUTUAL_TLS                 true enables mutual TLS with the certificates below
 #   NC_TLS_CUSTOM_CERTIFICATE     server certificate PEM (private key, certificate, intermediates)
 #   NC_TLS_CUSTOM_PASSWORD        password of the encrypted private key in NC_TLS_CUSTOM_CERTIFICATE
-#   NC_TLS_CUSTOM_CA_CERTIFICATE  server CA certificate PEM imported into NCache's trust directory
+#   NC_TLS_CUSTOM_CA_CERTIFICATE  server CA .crt file path inside the container
 #   NC_TLS_CLIENT_CERTIFICATE     client certificate PEM
 #   NC_TLS_CLIENT_PASSWORD        password of the encrypted private key in NC_TLS_CLIENT_CERTIFICATE
-#   NC_TLS_CLIENT_CA_CERTIFICATE  client CA certificate PEM imported into NCache's trust directory
+#   NC_TLS_CLIENT_CA_CERTIFICATE  client CA .crt file path inside the container (mutual TLS)
 #   NC_TLS_PROTOCOL_VERSION       tls12 (default), tls13 or auto
 #   NC_BIND_IP                    (ipbinding.sh) the address NCache binds to; TLS is enabled on the same address
 
