@@ -69,8 +69,18 @@ trust_ca_certificate() {
         $ErrorActionPreference = "Stop"
         try {
             $certificates = [System.Security.Cryptography.X509Certificates.X509Certificate2Collection]::new()
-            $certificates.ImportFromPemFile($env:TLS_CA_CERTIFICATE)
-            if ($certificates.Count -eq 0) { throw "No PEM certificates were found." }
+            try {
+                $certificates.ImportFromPemFile($env:TLS_CA_CERTIFICATE)
+                if ($certificates.Count -eq 0) {
+                    $data = [System.IO.File]::ReadAllBytes($env:TLS_CA_CERTIFICATE)
+                    if ([System.Security.Cryptography.X509Certificates.X509Certificate2]::GetCertContentType($data) -ne [System.Security.Cryptography.X509Certificates.X509ContentType]::Cert) {
+                        throw "Invalid certificate content."
+                    }
+                    [void]$certificates.Add([System.Security.Cryptography.X509Certificates.X509Certificate2]::new($data))
+                }
+            } catch {
+                throw "The CA certificate .crt file is invalid or contains no certificates."
+            }
             foreach ($certificate in $certificates) {
                 $constraints = $certificate.Extensions | Where-Object { $_.Oid.Value -eq "2.5.29.19" }
                 if (-not $constraints.CertificateAuthority) { throw "The file contains a certificate that is not a CA." }
