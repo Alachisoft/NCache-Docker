@@ -1,10 +1,10 @@
 # NCache Enterprise Docker Images
 
-Dockerfiles for **NCache Enterprise 5.3.800** on Linux.
+Dockerfiles for **NCache Enterprise 5.3.801** on Linux.
 
 | Image | Folder | Docker Hub |
 |---|---|---|
-| NCache Enterprise Server | [`server/`](server) | `alachisoft/ncache:latest`, `alachisoft/ncache:5.3.800` |
+| NCache Enterprise Server | [`server/`](server) | `alachisoft/ncache:latest`, `alachisoft/ncache:5.3.801` |
 | NCache Enterprise Client | [`client/`](client) | Build from the Dockerfile |
 
 The **server** image runs the NCache service, the execution service, the bridge service and the
@@ -15,7 +15,7 @@ application host. Both images include PowerShell with the NCache cmdlets.
 
 ```bash
 docker pull alachisoft/ncache:latest
-docker pull alachisoft/ncache:5.3.800
+docker pull alachisoft/ncache:5.3.801
 ```
 
 ## Build
@@ -91,8 +91,10 @@ you must renew it or NCache stops working; you are given ample alerts at renewal
 | `NC_ENABLE_TLS` | `false` | `true` enables TLS on the address NCache binds to. |
 | `NC_MUTUAL_TLS` | `false` | `true` also requires client certificates (mutual TLS). |
 | `NC_TLS_CUSTOM_CERTIFICATE` | | Path of the server certificate PEM inside the container: private key, leaf, then intermediates. |
+| `NC_TLS_CUSTOM_CA_CERTIFICATE` | | Path of the server CA certificate `.crt` file inside the container. |
 | `NC_TLS_CUSTOM_PASSWORD` | | Password of the encrypted private key in `NC_TLS_CUSTOM_CERTIFICATE`. |
 | `NC_TLS_CLIENT_CERTIFICATE` | | Path of the client certificate PEM used with mutual TLS. |
+| `NC_TLS_CLIENT_CA_CERTIFICATE` | | Path of the client CA certificate `.crt` file inside the container, used for mutual TLS. |
 | `NC_TLS_CLIENT_PASSWORD` | | Password of the encrypted private key in `NC_TLS_CLIENT_CERTIFICATE`. |
 | `NC_TLS_PROTOCOL_VERSION` | `tls12` | `tls12`, `tls13` or `auto`. |
 

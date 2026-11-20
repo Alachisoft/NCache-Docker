@@ -10,7 +10,7 @@ more. NCache is used by hundreds of companies all over the world in mission crit
 
 | Edition | Folder | Docker Hub tags | Documentation |
 |---|---|---|---|
-| NCache Enterprise | [`ncache/`](ncache) | `latest`, `5.3.800` | [Enterprise README](ncache/README.md) |
+| NCache Enterprise | [`ncache/`](ncache) | `latest`, `5.3.801` | [Enterprise README](ncache/README.md) |
 | NCache Open Source | [`ncache-oss/`](ncache-oss) | `latest-oss`, `5.3.603-OSS` | [Open Source README](ncache-oss/README.md) |
 
 ```bash
